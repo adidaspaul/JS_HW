@@ -1,0 +1,408 @@
+body, html{
+    width:100%;
+    height:100%;
+    font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+    background: url(background.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height:13%;
+    background-color: rgba(145, 144, 144, 0.364);
+    color: white;
+    text-align: center;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+
+.content{
+    text-align: center;
+    position: fixed;
+    align-self: auto;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.content1 {
+    text-align: center;
+    position: fixed;
+    align-self: auto;
+    top: 200px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.sector{
+        text-align: center;
+        position: fixed;
+        align-self: auto;
+        top: 300px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+}
+/* PET SECTION BUTTONS */
+.button-82-pushable {
+    position: relative;
+    border: none;
+    background: transparent;
+    padding: -10px;
+    cursor: pointer;
+    outline-offset: 4px;
+    transition: filter 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-82-shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: hsl(0deg 0% 0% / 0.25);
+    will-change: transform;
+    transform: translateY(2px);
+    transition:
+        transform 600ms cubic-bezier(.3, .7, .4, 1);
+}
+
+.button-82-edge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: linear-gradient(to left,
+            rgb(0, 41, 82) 0%,
+            rgb(0, 49, 163) 8%,
+            rgb(3, 0, 163) 92%,
+            rgb(15, 0, 82) 100%);
+}
+
+.button-82-front {
+    display: block;
+    position: relative;
+    padding: 8px 27px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    color: rgb(255, 255, 255);
+    background: rgba(0, 254, 0, 0.63);
+    will-change: transform;
+    transform: translateY(-4px);
+    transition:
+        transform 600ms cubic-bezier(.3, .7, .4, 1);
+}
+
+@media (min-width: 768px) {
+    .button-front {
+        font-size: 1.25rem;
+        padding: 12px 42px;
+    }
+}
+
+.button-82-pushable:hover {
+    filter: brightness(110%);
+}
+
+.button-82-pushable:hover .button-82-front {
+    transform: translateY(-6px);
+    transition:
+        transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.button-82-pushable:active .button-82-front {
+    transform: translateY(-2px);
+    transition: transform 34ms;
+}
+
+.button-82-pushable:hover .button-82-shadow {
+    transform: translateY(4px);
+    transition:
+        transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.button-82-pushable:active .button-82-shadow {
+    transform: translateY(1px);
+    transition: transform 34ms;
+}
+
+.button-82-pushable:focus:not(:focus-visible) {
+    outline: none;
+}
+/* DELETE BUTTONS */
+.button-83-pushable {
+    position: relative;
+    border: none;
+    background: transparent;
+    padding: -10;
+    cursor: pointer;
+    outline-offset: 4px;
+    transition: filter 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-83-shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: hsl(0deg 0% 0% / 0.25);
+    will-change: transform;
+    transform: translateY(2px);
+    transition:
+        transform 600ms cubic-bezier(.3, .7, .4, 1);
+}
+
+.button-83-edge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: linear-gradient(to left,
+            rgb(248, 109, 3) 0%,
+            rgb(163, 152, 0) 8%,
+            rgb(163, 73, 0) 92%,
+            rgb(82, 0, 37) 100%);
+}
+
+.button-83-front {
+    display: block;
+    position: relative;
+    padding: 12px 27px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    color: rgb(255, 255, 255);
+    background: rgb(170, 31, 31);
+    will-change: transform;
+    transform: translateY(-4px);
+    transition:
+        transform 600ms cubic-bezier(.3, .7, .4, 1);
+}
+
+.button-83-pushable:hover {
+    filter: brightness(110%);
+}
+
+.button-83-pushable:hover .button-83-front {
+    transform: translateY(-6px);
+    transition:
+        transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.button-83-pushable:active .button-83-front {
+    transform: translateY(-2px);
+    transition: transform 34ms;
+}
+
+.button-83-pushable:hover .button-83-shadow {
+    transform: translateY(4px);
+    transition:
+        transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.button-83-pushable:active .button-83-shadow {
+    transform: translateY(1px);
+    transition: transform 34ms;
+}
+
+.button-83-pushable:focus:not(:focus-visible) {
+    outline: none;
+}
+/* USERS BUTTONS */
+.button-84-pushable {
+    position: relative;
+    border: none;
+    background: transparent;
+    padding: -10;
+    cursor: pointer;
+    outline-offset: 4px;
+    transition: filter 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-84-shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.374);
+    will-change: transform;
+    transform: translateY(2px);
+    transition:
+        transform 600ms cubic-bezier(.3, .7, .4, 1);
+}
+
+.button-84-edge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: linear-gradient(to left,
+            rgb(139, 5, 176) 0%,
+            rgb(73, 1, 59) 8%,
+            rgb(103, 0, 163) 92%,
+            rgb(55, 2, 98) 100%);
+}
+
+.button-84-front {
+    display: block;
+    position: relative;
+    padding: 12px 27px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    color: rgb(255, 255, 255);
+    background: rgba(245, 148, 3, 0.674);
+    will-change: transform;
+    transform: translateY(-4px);
+    transition:
+        transform 600ms cubic-bezier(.3, .7, .4, 1);
+}
+
+
+.button-84-pushable:hover {
+    filter: brightness(110%);
+}
+
+.button-84-pushable:hover .button-84-front {
+    transform: translateY(-6px);
+    transition:
+        transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.button-84-pushable:active .button-84-front {
+    transform: translateY(-2px);
+    transition: transform 34ms;
+}
+
+.button-84-pushable:hover .button-84-shadow {
+    transform: translateY(4px);
+    transition:
+        transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.button-84-pushable:active .button-84-shadow {
+    transform: translateY(1px);
+    transition: transform 34ms;
+}
+
+.button-84-pushable:focus:not(:focus-visible) {
+    outline: none;
+}
+/* STORE BUTTONS */
+.button-81-pushable {
+    position: relative;
+    border: none;
+    background: transparent;
+    padding: -10;
+    cursor: pointer;
+    outline-offset: 4px;
+    transition: filter 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-81-shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.374);
+    will-change: transform;
+    transform: translateY(2px);
+    transition:
+        transform 600ms cubic-bezier(.3, .7, .4, 1);
+}
+
+.button-81-edge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: linear-gradient(to left,
+            rgb(244, 83, 2) 0%,
+            rgb(166, 1, 133) 8%,
+            rgb(163, 12, 251) 92%,
+            rgb(92, 224, 4) 100%);
+}
+
+.button-81-front {
+    display: block;
+    position: relative;
+    padding: 12px 27px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    color: rgb(255, 255, 255);
+    background: rgba(0, 4, 108, 0.437);
+    will-change: transform;
+    transform: translateY(-4px);
+    transition:
+        transform 600ms cubic-bezier(.3, .7, .4, 1);
+}
+
+
+.button-81-pushable:hover {
+    filter: brightness(110%);
+}
+
+.button-81-pushable:hover .button-81-front {
+    transform: translateY(-6px);
+    transition:
+        transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.button-81-pushable:active .button-81-front {
+    transform: translateY(-2px);
+    transition: transform 34ms;
+}
+
+.button-81-pushable:hover .button-81-shadow {
+    transform: translateY(4px);
+    transition:
+        transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.button-81-pushable:active .button-81-shadow {
+    transform: translateY(1px);
+    transition: transform 34ms;
+}
+
+.button-81-pushable:focus:not(:focus-visible) {
+    outline: none;
+}
