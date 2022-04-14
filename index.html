@@ -22,26 +22,30 @@
         ><span class="button-82-front text"
           >FIND A PET <br /><i>(by ID)</i></span
         >
-
-        <!-- <form id="find-pet-by-id" method="POST" action="">
-          <label for="pet-id">Pet ID:</label>
-          <input type="text" id="pet-id" name="pet-id" />
-          <button type="submit" id="find-pet-by-id-button">Find Pet</button>
-        </form>  -->
       </button>
-      <dialog class="modal">
-        <h2>TYPE PET ID</h2>
+      <dialog class="modalPetId">
+        <label for="pet-id">TYPE PET ID 🐶</label>
         <input type="number" id="pet-id" name="pet-id" method="dialog" />
         <button id="find-pet-by-id-button">Find Pet</button>
         <span class="close">&times;</span>
       </dialog>
-      <button class="button-82-pushable" role="button">
+      <button class="button-82-pushable" role="button" id="findPetByStatus">
         <span class="button-82-shadow"></span
         ><span class="button-82-edge"></span
         ><span class="button-82-front text"
           >FIND A PET <br /><i>(by STATUS)</i></span
         >
       </button>
+      <dialog class="modalPetStatus">
+        <label for="pet-status">SELECT PET STATUS ☑️</label>
+        <select id="pet-status" name="pet-status" method="dialog">
+          <option value="available">available</option>
+          <option value="pending">pending</option>
+          <option value="sold">sold</option>
+        </select>
+        <button id="find-pet-by-status-button">Find Pet</button>
+        <span class="close" id="close">&times;</span>
+      </dialog>
       <button class="button-82-pushable" role="button">
         <span class="button-82-shadow"></span
         ><span class="button-82-edge"></span
@@ -178,3 +182,10 @@
     <script src="fetch.js" defer></script>
   </body>
 </html>
+
+<!-- FORM EXAMPLE 
+          <form id="find-pet-by-id" method="POST" action="">
+          <label for="pet-id">Pet ID:</label>
+          <input type="text" id="pet-id" name="pet-id" />
+          <button type="submit" id="find-pet-by-id-button">Find Pet</button>
+        </form>  -->
