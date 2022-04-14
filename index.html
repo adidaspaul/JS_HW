@@ -22,12 +22,19 @@
         ><span class="button-82-front text"
           >FIND A PET <br /><i>(by ID)</i></span
         >
+
         <!-- <form id="find-pet-by-id" method="POST" action="">
           <label for="pet-id">Pet ID:</label>
           <input type="text" id="pet-id" name="pet-id" />
           <button type="submit" id="find-pet-by-id-button">Find Pet</button>
         </form>  -->
       </button>
+      <dialog class="modal">
+        <h2>TYPE PET ID</h2>
+        <input type="number" id="pet-id" name="pet-id" method="dialog" />
+        <button id="find-pet-by-id-button">Find Pet</button>
+        <span class="close">&times;</span>
+      </dialog>
       <button class="button-82-pushable" role="button">
         <span class="button-82-shadow"></span
         ><span class="button-82-edge"></span

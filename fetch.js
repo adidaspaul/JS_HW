@@ -1,4 +1,4 @@
-const findPetById = document.getElementById('findPetById');
+const findPetById = document.getElementById('find-pet-by-id-button');
 
 const sendRequest = (method, url, data) => {
     return fetch(url, {
@@ -19,8 +19,20 @@ const sendRequest = (method, url, data) => {
 
 const findPetByIdData = () => {
     sendRequest('GET', 'https://petstore.swagger.io/v2/pet/findByStatus?status=available').then(data => {
-        console.log(data);
+        document.write(JSON.stringify(data));
     });
 }
+
+const openModal = document.querySelector('#findPetById');
+const closeModal = document.querySelector('.close');
+const modal = document.querySelector('.modal');
+
+openModal.addEventListener('click', () => {
+    modal.showModal();
+});
+closeModal.addEventListener('click', () => {
+    modal.close();
+});
+
 
 findPetById.addEventListener('click', findPetByIdData);
