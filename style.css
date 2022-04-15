@@ -97,6 +97,19 @@ body, html{
     background: linear-gradient(45deg, green, blue);
     opacity: .4;
 }
+.modal-add-pet{
+    padding:1em;
+max-width: 50ch;
+margin: 1em auto;
+background: radial-gradient(rgb(191, 255, 0), rgb(186, 8, 231));
+position: fixed;
+border-radius: 25px;
+
+}
+.modal-add-pet::backdrop{
+    background: linear-gradient(45deg, green, blue);
+    opacity: .4;
+}
 
 label{
     font-size: 1.5em;
@@ -178,6 +191,24 @@ dialog[open] {
     color: rgb(4, 4, 4);
     font-weight: 700;
     opacity: 100;
+}
+#update-pet-button{
+    border: 20;
+    border-radius: 25px;
+    cursor: pointer;
+    background: rgb(105, 245, 87);
+    color: rgb(4, 4, 4);
+    font-weight: 700;
+    opacity: 100;
+}
+#add-pet-button{
+        border: 20;
+        border-radius: 25px;
+        cursor: pointer;
+        background: rgb(105, 245, 87);
+        color: rgb(4, 4, 4);
+        font-weight: 700;
+        opacity: 100;
 }
 
 

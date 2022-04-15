@@ -75,8 +75,14 @@ function categoryIdCheck(value) {
     }
 }
 const addPet = () => {
+    function generateRandomId(maxLimit = 900) {
+        let rand = Math.random() * maxLimit;
+        console.log(rand); // say 99.81321410836433.
+        rand = Math.floor(rand); // 99.
+        return rand;
+    }
     var pet = {
-        id: document.getElementById('add-pet-id').value,
+        id: generateRandomId(),
         category: {
             id: categoryIdCheck(document.getElementById('add-pet-category').value),
             name: document.getElementById('add-pet-category').value,
@@ -87,7 +93,7 @@ const addPet = () => {
             id: 1,
             name: 'Golden Tag'
         }],
-        status: document.getElementById('add-pet-status').value
+        status: 'available'
     }
     sendRequest('POST', 'https://petstore.swagger.io/v2/pet', pet).then(data => {
         document.write(JSON.stringify(data));
@@ -114,7 +120,7 @@ const closeModalAddPet = document.querySelector('#closeAddPet');
 
 
 
-
+//---OPEN/CLOSE PET ID MODAL--------------------
 openModalPetId.addEventListener('click', () => {
     modalPetId.showModal();
 });
@@ -122,7 +128,7 @@ closeModalPetId.addEventListener('click', () => {
     modalPetId.close();
 });
 
-
+//---OPEN/CLOSE PET STATUS MODAL--------------------
 openModalPetStatus.addEventListener('click', () => {
     modalPetStatus.showModal();
 });
@@ -130,11 +136,20 @@ closeModal.addEventListener('click', () => {
     modalPetStatus.close();
 });
 
+//OPEN/CLOSE UPDATE PET MODAL----------------------
 openModalUpdatePet.addEventListener('click', () => {
     modalUpdatePet.showModal();
 });
 closeModalUpdatePet.addEventListener('click', () => {
     modalUpdatePet.close();
+});
+
+//OPEN/CLOSE ADD PET MODAL---------------------
+openModalAddPet.addEventListener('click', () => {
+    modalAddPet.showModal();
+});
+closeModalAddPet.addEventListener('click', () => {
+    modalAddPet.close();
 });
 
 // MODAL OPTIONS CODE END
@@ -144,10 +159,11 @@ closeModalUpdatePet.addEventListener('click', () => {
 const findPetById = document.getElementById('find-pet-by-id-button');
 const findPetByStat = document.getElementById('find-pet-by-status-button');
 const updatePetButton = document.getElementById('update-pet-button');
-
+const addPetButton = document.getElementById('add-pet-button');
 //EVENT LISTENERS(BUTTONS) TO SEND REQUESTS-- CODE STARTS HERE
 
 findPetById.addEventListener('click', findPetByIdData);
 findPetByStat.addEventListener('click', findPetByStatusData);
 updatePetButton.addEventListener('click', updatePet);
+addPetButton.addEventListener('click', addPet);
 

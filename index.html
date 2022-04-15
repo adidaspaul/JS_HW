@@ -92,7 +92,7 @@
           <option value="bird">bird</option>
           <option value="other">other</option></select
         ><br />
-        <label class="form" for="pet-photo">PASTE PET PHOTO url 🐶</label>
+        <label class="form" for="pet-photo">PASTE PET PHOTO url 🖼</label>
         <input
           type="text"
           id="pet-photo-url"
@@ -105,13 +105,43 @@
       <!-- UPDATE PET END ------------------------------------->
 
       <!-- ADD NEW PET START ---------------------------------->
-      <button class="button-82-pushable" role="button">
+      <button class="button-82-pushable" role="button" id="addPet">
         <span class="button-82-shadow"></span
         ><span class="button-82-edge"></span
         ><span class="button-82-front text">ADD A NEW <br />PET</span>
       </button>
-
+      <dialog class="modal-add-pet">
+        <label class="form" for="addPetName">TYPE PET NAME </label>
+        <input
+          type="text"
+          id="add-pet-name"
+          name="addPetName"
+          method="dialog"
+        /><br />
+        <label class="form" for="add-pet-category">
+          SELECT PET CATEGORY 😸
+        </label>
+        <select id="add-pet-category" name="add-pet-category" method="dialog">
+          <option value="dog">dog</option>
+          <option value="cate">cat</option>
+          <option value="bird">bird</option>
+          <option value="other">other</option>
+        </select>
+        <br />
+        <label class="form" for="add-pet-photo-url"
+          >PASTE PET PHOTO url 🖼</label
+        >
+        <input
+          type="text"
+          id="add-pet-photo-url"
+          name="add-pet-photo-url"
+          method="dialog"
+        /><br />
+        <button id="add-pet-button">Add Pet</button>
+        <span class="close" id="closeAddPet">&times</span>
+      </dialog>
       <!-- ADD NEW PET END ---------------------------------->
+
       <button class="button-82-pushable" role="button">
         <span class="button-82-shadow"></span
         ><span class="button-82-edge"></span
@@ -125,6 +155,8 @@
         ><span class="button-82-edge"></span
         ><span class="button-82-front text">UPLOAD PET <br />IMAGE</span>
       </button>
+
+      <!-- DELETE PET START ---------------------------------->
       <button class="button-83-pushable" role="button">
         <span class="button-83-shadow"></span
         ><span class="button-83-edge"></span
@@ -132,6 +164,7 @@
           >DELETE A PET <br /><i>(by ID)</i></span
         >
       </button>
+      <!-- DELETE PET START ---------------------------------->
     </div>
     <!-- -----------------STORE REQUESTS--------------- -->
     <section class="content1">
