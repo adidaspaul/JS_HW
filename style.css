@@ -110,6 +110,34 @@ border-radius: 25px;
     background: linear-gradient(45deg, green, blue);
     opacity: .4;
 }
+.modal-delete-pet-by-id{
+    padding:1em;
+    max-width: 50ch;
+    margin: 1em auto;
+    background: radial-gradient(rgb(227, 117, 86), rgb(84, 5, 5));
+    position: fixed;
+    border-radius: 25px;
+}
+.modal-delete-pet-by-id::backdrop {
+    background: linear-gradient(45deg, rgb(116, 1, 1), rgb(229, 255, 0));
+    opacity: .4;
+}
+#delete-confirmation{
+    padding:1em;
+    max-width: 50ch;
+    margin: 1em auto;
+    background: radial-gradient(rgb(227, 117, 86), rgb(142, 9, 9));
+    position: relative;
+    border-radius: 25px;
+}
+#delete-confirmation{
+    padding:1em;
+    max-width: 50ch;
+    margin: 1em auto;
+    background: radial-gradient(rgb(123, 56, 38), rgb(84, 5, 5));
+    position: relative;
+    border-radius: 25px;
+}
 
 label{
     font-size: 1.5em;
@@ -209,6 +237,15 @@ dialog[open] {
         color: rgb(4, 4, 4);
         font-weight: 700;
         opacity: 100;
+}
+#delete-pet-by-id-button{
+    border: 20;
+    border-radius: 25px;
+    cursor: pointer;
+    background: rgb(245, 182, 87);
+    color: rgb(4, 4, 4);
+    font-weight: 700;
+    opacity: 100;
 }
 
 

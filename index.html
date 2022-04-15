@@ -161,13 +161,29 @@
       <!--UPLOAD IMAGE END -------------------------->
 
       <!-- DELETE PET START ---------------------------------->
-      <button class="button-83-pushable" role="button">
+      <button class="button-83-pushable" role="button" id="deletePet">
         <span class="button-83-shadow"></span
         ><span class="button-83-edge"></span
         ><span class="button-83-front text"
           >DELETE A PET <br /><i>(by ID)</i></span
         >
       </button>
+      <dialog class="modal-delete-pet-by-id">
+        <label for="delete-pet-id">TYPE PET ID </label>
+        <input
+          type="number"
+          id="delete-pet-id"
+          name="delete-pet-id"
+          method="dialog"
+        />
+        <button id="delete-pet-by-id-button">DELETE</button>
+        <span class="close" id="close-delete-pet">&times;</span>
+      </dialog>
+      <dialog class="delete-confirmation" id="delete-confirmation">
+        <p>Are you sure you want to delete this pet?</p>
+        <button id="delete-confirmation-button">DELETE IN CONFIDENCE</button>
+        <button id="cancel-delete-confirmation-button">CANCEL</button>
+      </dialog>
       <!-- DELETE PET END ---------------------------------->
     </div>
     <!-- -----------------STORE REQUESTS--------------- -->

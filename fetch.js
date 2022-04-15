@@ -100,26 +100,19 @@ const addPet = () => {
     });
 }
 
+const deletePetById = () => {
+    var petId = document.getElementById('delete-pet-id').value;
+    sendRequest('DELETE', 'https://petstore.swagger.io/v2/pet/' + petId).then(data => {
+        document.write("deleted");
+    });
+
+}
+
 // MODAL OPTIONS CODE STARTS HERE
+//FIND PET ID MODAL
 const modalPetId = document.querySelector('.modal-pet-id');
 const openModalPetId = document.querySelector('#findPetById');
 const closeModalPetId = document.querySelector('.close');
-
-const modalPetStatus = document.querySelector('.modal-pet-status');
-const openModalPetStatus = document.querySelector('#findPetByStatus');
-const closeModal = document.querySelector('#close');
-
-
-const modalUpdatePet = document.querySelector('.modal-update-pet');
-const openModalUpdatePet = document.querySelector('#updatePet');
-const closeModalUpdatePet = document.querySelector('#closeUpdatePet');
-
-const modalAddPet = document.querySelector('.modal-add-pet');
-const openModalAddPet = document.querySelector('#addPet');
-const closeModalAddPet = document.querySelector('#closeAddPet');
-
-
-
 //---OPEN/CLOSE PET ID MODAL--------------------
 openModalPetId.addEventListener('click', () => {
     modalPetId.showModal();
@@ -128,6 +121,10 @@ closeModalPetId.addEventListener('click', () => {
     modalPetId.close();
 });
 
+//FIND PET BY STATUS MODAL
+const modalPetStatus = document.querySelector('.modal-pet-status');
+const openModalPetStatus = document.querySelector('#findPetByStatus');
+const closeModal = document.querySelector('#close');
 //---OPEN/CLOSE PET STATUS MODAL--------------------
 openModalPetStatus.addEventListener('click', () => {
     modalPetStatus.showModal();
@@ -136,6 +133,11 @@ closeModal.addEventListener('click', () => {
     modalPetStatus.close();
 });
 
+
+//UPDATE PET MODAL
+const modalUpdatePet = document.querySelector('.modal-update-pet');
+const openModalUpdatePet = document.querySelector('#updatePet');
+const closeModalUpdatePet = document.querySelector('#closeUpdatePet');
 //OPEN/CLOSE UPDATE PET MODAL----------------------
 openModalUpdatePet.addEventListener('click', () => {
     modalUpdatePet.showModal();
@@ -144,6 +146,11 @@ closeModalUpdatePet.addEventListener('click', () => {
     modalUpdatePet.close();
 });
 
+
+//ADD PET MODAL
+const modalAddPet = document.querySelector('.modal-add-pet');
+const openModalAddPet = document.querySelector('#addPet');
+const closeModalAddPet = document.querySelector('#closeAddPet');
 //OPEN/CLOSE ADD PET MODAL---------------------
 openModalAddPet.addEventListener('click', () => {
     modalAddPet.showModal();
@@ -151,6 +158,32 @@ openModalAddPet.addEventListener('click', () => {
 closeModalAddPet.addEventListener('click', () => {
     modalAddPet.close();
 });
+
+
+
+//DELETE PET ID MODAL
+const modalDeletePet = document.querySelector('.modal-delete-pet-by-id');
+const openModalDeletePet = document.querySelector('#deletePet');
+const closeModalDeletePet = document.querySelector('#close-delete-pet');
+const deletePetConfirmationModal = document.querySelector('#delete-confirmation');
+const openDeleteConfirmationModal = document.querySelector('#delete-pet-by-id-button');
+const closeDeleteConfirmationModal = document.querySelector('#cancel-delete-confirmation-button');
+//---OPEN/CLOSE DELETE PET ID MODAL--------------------
+openModalDeletePet.addEventListener('click', () => {
+    modalDeletePet.showModal();
+});
+closeModalDeletePet.addEventListener('click', () => {
+    modalDeletePet.close();
+});
+openDeleteConfirmationModal.addEventListener('click', () => {
+    deletePetConfirmationModal.showModal();
+});
+closeDeleteConfirmationModal.addEventListener('click', () => {
+    deletePetConfirmationModal.close();
+});
+
+
+
 
 // MODAL OPTIONS CODE END
 
@@ -160,10 +193,13 @@ const findPetById = document.getElementById('find-pet-by-id-button');
 const findPetByStat = document.getElementById('find-pet-by-status-button');
 const updatePetButton = document.getElementById('update-pet-button');
 const addPetButton = document.getElementById('add-pet-button');
+const deleteByIdButton = document.getElementById('delete-confirmation-button');
 //EVENT LISTENERS(BUTTONS) TO SEND REQUESTS-- CODE STARTS HERE
 
 findPetById.addEventListener('click', findPetByIdData);
 findPetByStat.addEventListener('click', findPetByStatusData);
 updatePetButton.addEventListener('click', updatePet);
 addPetButton.addEventListener('click', addPet);
+deleteByIdButton.addEventListener('click', deletePetById);
+
 
