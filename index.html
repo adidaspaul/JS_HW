@@ -16,6 +16,7 @@
     </div>
     <!-- PETS REQUESTS -->
     <div class="content">
+      <!-- FIND BY ID START -->
       <button class="button-82-pushable" role="button" id="findPetById">
         <span class="button-82-shadow"></span
         ><span class="button-82-edge"></span
@@ -23,12 +24,15 @@
           >FIND A PET <br /><i>(by ID)</i></span
         >
       </button>
-      <dialog class="modalPetId">
+      <dialog class="modal-pet-id">
         <label for="pet-id">TYPE PET ID 🐶</label>
         <input type="number" id="pet-id" name="pet-id" method="dialog" />
         <button id="find-pet-by-id-button">Find Pet</button>
         <span class="close">&times;</span>
       </dialog>
+      <!-- FIND BY ID END -->
+
+      <!-- FIND BY STATUS START -->
       <button class="button-82-pushable" role="button" id="findPetByStatus">
         <span class="button-82-shadow"></span
         ><span class="button-82-edge"></span
@@ -36,7 +40,7 @@
           >FIND A PET <br /><i>(by STATUS)</i></span
         >
       </button>
-      <dialog class="modalPetStatus">
+      <dialog class="modal-pet-status">
         <label for="pet-status">SELECT PET STATUS ☑️</label>
         <select id="pet-status" name="pet-status" method="dialog">
           <option value="available">available</option>
@@ -46,16 +50,68 @@
         <button id="find-pet-by-status-button">Find Pet</button>
         <span class="close" id="close">&times;</span>
       </dialog>
-      <button class="button-82-pushable" role="button">
+      <!-- FIND BY STATUS END -->
+
+      <!-- UPDATE PET START -->
+      <button class="button-82-pushable" role="button" id="updatePet">
         <span class="button-82-shadow"></span
         ><span class="button-82-edge"></span
         ><span class="button-82-front text">UPDATE EXISTING <br />PET</span>
       </button>
+      <dialog class="modal-update-pet">
+        <label class="form" for="updatePet-id">TYPE PET ID </label>
+        <input
+          type="number"
+          id="updatePet-id"
+          name="updatePet-id"
+          method="dialog"
+        /><br />
+        <label class="form" for="updatePet-name">TYPE PET NAME </label>
+        <input
+          type="text"
+          id="updatePet-name"
+          name="updatePet-name"
+          method="dialog"
+        /><br />
+        <label class="form" for="updatePet-status">SELECT PET STATUS ☑️</label>
+        <select id="updatePet-status" name="updatePet-status" method="dialog">
+          <option value="available">available</option>
+          <option value="pending">pending</option>
+          <option value="sold">sold</option></select
+        ><br />
+        <label class="form" for="updatePet-category"
+          >SELECT PET CATEGORY 🐶</label
+        >
+        <select
+          id="updatePet-category"
+          name="updatePet-category"
+          method="dialog"
+        >
+          <option value="dog">dog</option>
+          <option value="cat">cat</option>
+          <option value="bird">bird</option>
+          <option value="other">other</option></select
+        ><br />
+        <label class="form" for="pet-photo">PASTE PET PHOTO url 🐶</label>
+        <input
+          type="text"
+          id="pet-photo-url"
+          name="pet-photo"
+          method="dialog"
+        /><br />
+        <button id="update-pet-button">Update Pet</button>
+        <span class="close" id="closeUpdatePet">&times;</span>
+      </dialog>
+      <!-- UPDATE PET END ------------------------------------->
+
+      <!-- ADD NEW PET START ---------------------------------->
       <button class="button-82-pushable" role="button">
         <span class="button-82-shadow"></span
         ><span class="button-82-edge"></span
         ><span class="button-82-front text">ADD A NEW <br />PET</span>
       </button>
+
+      <!-- ADD NEW PET END ---------------------------------->
       <button class="button-82-pushable" role="button">
         <span class="button-82-shadow"></span
         ><span class="button-82-edge"></span
@@ -63,6 +119,7 @@
           >UPDATE PET IN STORE<br /><i>(with form data)</i></span
         >
       </button>
+
       <button class="button-82-pushable" role="button">
         <span class="button-82-shadow"></span
         ><span class="button-82-edge"></span
