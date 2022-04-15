@@ -140,8 +140,9 @@
         <button id="add-pet-button">Add Pet</button>
         <span class="close" id="closeAddPet">&times</span>
       </dialog>
-      <!-- ADD NEW PET END ---------------------------------->
+      <!-- ADD NEW PET END ------------------------------------>
 
+      <!-- UPDATE PET IN STORE START ---------------------------------->
       <button class="button-82-pushable" role="button">
         <span class="button-82-shadow"></span
         ><span class="button-82-edge"></span
@@ -149,12 +150,15 @@
           >UPDATE PET IN STORE<br /><i>(with form data)</i></span
         >
       </button>
+      <!-- UPDATE PET IN STORE END ---------------------------------->
 
+      <!--UPLOAD IMAGE START -------------------------->
       <button class="button-82-pushable" role="button">
         <span class="button-82-shadow"></span
         ><span class="button-82-edge"></span
         ><span class="button-82-front text">UPLOAD PET <br />IMAGE</span>
       </button>
+      <!--UPLOAD IMAGE END -------------------------->
 
       <!-- DELETE PET START ---------------------------------->
       <button class="button-83-pushable" role="button">
@@ -164,7 +168,7 @@
           >DELETE A PET <br /><i>(by ID)</i></span
         >
       </button>
-      <!-- DELETE PET START ---------------------------------->
+      <!-- DELETE PET END ---------------------------------->
     </div>
     <!-- -----------------STORE REQUESTS--------------- -->
     <section class="content1">
@@ -200,7 +204,7 @@
       </button>
     </section>
     <!-- USERS REQUESTS -->
-    <section class="sector">
+    <div class="sector">
       <button class="button-84-pushable" role="button">
         <span class="button-84-shadow"></span
         ><span class="button-84-edge"></span
@@ -252,7 +256,7 @@
           >DELETE USER <br /><i>(by USERNAME)</i></span
         >
       </button>
-    </section>
+    </div>
     <!-- FOOTER -->
     <div class="footer">
       <h3>THANKS</h3>
@@ -272,10 +276,3 @@
     <script src="fetch.js" defer></script>
   </body>
 </html>
-
-<!-- FORM EXAMPLE 
-          <form id="find-pet-by-id" method="POST" action="">
-          <label for="pet-id">Pet ID:</label>
-          <input type="text" id="pet-id" name="pet-id" />
-          <button type="submit" id="find-pet-by-id-button">Find Pet</button>
-        </form>  -->
