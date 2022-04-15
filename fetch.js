@@ -13,8 +13,8 @@ const sendRequest = (method, url, data) => {
         if (response.status >= 400) {
             return response.json().then(errData => {
                 let err = new Error('Things got out of hand');
-                err.data = errData;
-                throw err;
+                err = errData;
+                document.write(JSON.stringify(err.message));
             });
         }
         return response.json();
