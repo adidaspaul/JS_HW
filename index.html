@@ -28,6 +28,7 @@
         <label for="pet-id">TYPE PET ID 🐶</label>
         <input type="number" id="pet-id" name="pet-id" method="dialog" />
         <button id="find-pet-by-id-button">Find Pet</button>
+        <p id="result"></p>
         <span class="close">&times;</span>
       </dialog>
       <!-- FIND BY ID END -->
@@ -58,7 +59,7 @@
         ><span class="button-82-edge"></span
         ><span class="button-82-front text">UPDATE EXISTING <br />PET</span>
       </button>
-      <dialog class="modal-update-pet">
+      <dialog class="modal-update-pet" id="result2">
         <label class="form" for="updatePet-id">TYPE PET ID </label>
         <input
           type="number"
@@ -110,7 +111,7 @@
         ><span class="button-82-edge"></span
         ><span class="button-82-front text">ADD A NEW <br />PET</span>
       </button>
-      <dialog class="modal-add-pet">
+      <dialog class="modal-add-pet" id="result3">
         <label class="form" for="addPetName">TYPE PET NAME </label>
         <input
           type="text"
@@ -169,7 +170,7 @@
         >
       </button>
       <dialog class="modal-delete-pet-by-id">
-        <label for="delete-pet-id">TYPE PET ID </label>
+        <label id="label" for="delete-pet-id">TYPE PET ID </label>
         <input
           type="number"
           id="delete-pet-id"
@@ -180,9 +181,14 @@
         <span class="close" id="close-delete-pet">&times;</span>
       </dialog>
       <dialog class="delete-confirmation" id="delete-confirmation">
-        <p>Are you sure you want to delete this pet?</p>
-        <button id="delete-confirmation-button">DELETE IN CONFIDENCE</button>
-        <button id="cancel-delete-confirmation-button">CANCEL</button>
+        <p id="demo">Are you sure you want to delete this pet?</p>
+        <button class="confirmation" id="delete-confirmation-button">
+          DELETE IN CONFIDENCE
+        </button>
+        <button class="confirmation" id="cancel-delete-confirmation-button">
+          CANCEL
+        </button>
+        <span class="close" id="x-delete-confirmation-button">&times;</span>
       </dialog>
       <!-- DELETE PET END ---------------------------------->
     </div>

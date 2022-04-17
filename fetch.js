@@ -8,9 +8,14 @@ const sendRequest = (method, url, data) => {
     }).then(response => {
         if (response.status >= 400) {
             return response.json().then(errData => {
-                let err = new Error('Things got out of hand');
-                err = errData;
-                document.write(JSON.stringify(err.message));
+                if (response.status === 404) {
+                    document.write(JSON.stringify("PET NOT FOUND"));
+                    setTimeout(() => { location.reload(); }, 2000);
+                } else {
+                    let err = new Error('Things got out of hand');
+                    err.data = errData;
+                    document.write(JSON.stringify(err.message));
+                }
             });
         }
         return response.json();
@@ -21,8 +26,10 @@ const findPetByIdData = () => {
 
     var petId = document.getElementById('pet-id').value;
     sendRequest('GET', 'https://petstore.swagger.io/v2/pet/' + petId).then(data => {
-        document.write(JSON.stringify(data.id + '<br>' + 'pet\'s name--> ' + data.name + "<br>" + 'status --> ' + data.status
+        document.getElementById('result').innerHTML = (JSON.stringify(data.id + '<br>' + 'pet\'s name--> ' + data.name + "<br>" + 'status --> ' + data.status
             + '<br>' + 'photo--> ' + data.photoUrls[0]));
+        // document.write(JSON.stringify(data.id + '<br>' + 'pet\'s name--> ' + data.name + "<br>" + 'status --> ' + data.status
+        //     + '<br>' + 'photo--> ' + data.photoUrls[0]));
     });
 }
 
@@ -52,7 +59,17 @@ const updatePet = () => {
     }
 
     sendRequest('PUT', 'https://petstore.swagger.io/v2/pet', pet).then(data => {
-        document.write(JSON.stringify(data));
+        if (data.status >= 400) {
+            return data.json().then(err => {
+                document.write(JSON.stringify(err.message));
+                setTimeout(() => { location.reload(); }, 4000);
+            }
+            );
+        }
+        document.getElementById('result2').innerHTML = (JSON.stringify(data.id + '<br>' + 'pet\'s name--> ' + data.name + "<br>" + 'status --> ' + data.status
+            + '<br>' + '<br>' + 'photo--> ' + data.photoUrls[0])) + '<br>' + 'Pet updated.<br> 🔄PAGE WILL REFRESH AFTER 5sec';
+        // document.write(JSON.stringify(data));
+        setTimeout(() => { location.reload(); }, 5000);
     });
 }
 function categoryIdCheck(value) {
@@ -96,14 +113,18 @@ const addPet = () => {
         status: 'available'
     }
     sendRequest('POST', 'https://petstore.swagger.io/v2/pet', pet).then(data => {
-        document.write(JSON.stringify(data));
+        document.getElementById('result3').innerHTML = (JSON.stringify(data.id + '<br>' + 'pet\'s name--> ' + data.name + "<br>" + 'status --> '
+            + data.status + '<br>' + '<br>' + 'photo--> ' + data.photoUrls[0])) + '<br>' + 'Pet added.<br> 🔄PAGE WILL REFRESH AFTER 5sec';
+        setTimeout(() => { location.reload(); }, 3000);
     });
 }
 
 const deletePetById = () => {
     var petId = document.getElementById('delete-pet-id').value;
     sendRequest('DELETE', 'https://petstore.swagger.io/v2/pet/' + petId).then(data => {
-        document.write("deleted");
+        document.getElementById('demo').innerHTML = 'Pet deleted <br> 🔄PAGE WILL REFRESH AFTER 2sec';
+        setTimeout(() => { location.reload(); }, 3000);
+        // document.write("deleted");
     });
 
 }
@@ -168,6 +189,7 @@ const closeModalDeletePet = document.querySelector('#close-delete-pet');
 const deletePetConfirmationModal = document.querySelector('#delete-confirmation');
 const openDeleteConfirmationModal = document.querySelector('#delete-pet-by-id-button');
 const closeDeleteConfirmationModal = document.querySelector('#cancel-delete-confirmation-button');
+const closedDeleteConfirmationModal = document.querySelector('#x-delete-confirmation-button');
 //---OPEN/CLOSE DELETE PET ID MODAL--------------------
 openModalDeletePet.addEventListener('click', () => {
     modalDeletePet.showModal();
@@ -179,6 +201,9 @@ openDeleteConfirmationModal.addEventListener('click', () => {
     deletePetConfirmationModal.showModal();
 });
 closeDeleteConfirmationModal.addEventListener('click', () => {
+    deletePetConfirmationModal.close();
+});
+closedDeleteConfirmationModal.addEventListener('click', () => {
     deletePetConfirmationModal.close();
 });
 
