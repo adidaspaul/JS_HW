@@ -26,8 +26,9 @@ const findPetByIdData = () => {
 
     var petId = document.getElementById('pet-id').value;
     sendRequest('GET', 'https://petstore.swagger.io/v2/pet/' + petId).then(data => {
-        document.getElementById('result').innerHTML = (JSON.stringify(data.id + '<br>' + 'pet\'s name--> ' + data.name + "<br>" + 'status --> ' + data.status
-            + '<br>' + 'photo--> ' + data.photoUrls[0]));
+        let name = data.tags[0].name;
+        document.getElementById('result').innerHTML = (JSON.stringify(data.id + '<br>' + 'PET\'S NAME--> ' + data.name + "<br>" + 'STORE STATUS --> ' + data.status
+            + '<br>' + 'photo--> ' + data.photoUrls[0] + '<br>' + 'TAG--> ' + name + '<br>' + 'CATEGORY--> ' + data.category.name));
         // document.write(JSON.stringify(data.id + '<br>' + 'pet\'s name--> ' + data.name + "<br>" + 'status --> ' + data.status
         //     + '<br>' + 'photo--> ' + data.photoUrls[0]));
     });
@@ -67,7 +68,7 @@ const updatePet = () => {
             );
         }
         document.getElementById('result2').innerHTML = (JSON.stringify(data.id + '<br>' + 'pet\'s name--> ' + data.name + "<br>" + 'status --> ' + data.status
-            + '<br>' + '<br>' + 'photo--> ' + data.photoUrls[0])) + '<br>' + 'Pet updated.<br> 🔄PAGE WILL REFRESH AFTER 5sec';
+            + '<br>' + '<br>' + 'photo--> ' + data.photoUrls[0])) + '<br>' + 'PET UPDATED.<br> 🔄PAGE WILL REFRESH AFTER 5sec';
         // document.write(JSON.stringify(data));
         setTimeout(() => { location.reload(); }, 5000);
     });
@@ -94,8 +95,8 @@ function categoryIdCheck(value) {
 const addPet = () => {
     function generateRandomId(maxLimit = 900) {
         let rand = Math.random() * maxLimit;
-        console.log(rand); // say 99.81321410836433.
-        rand = Math.floor(rand); // 99.
+        console.log(rand);
+        rand = Math.floor(rand);
         return rand;
     }
     var pet = {
