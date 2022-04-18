@@ -130,28 +130,32 @@ const deletePetById = () => {
 
 }
 
-const updatePetInStore = function (e) {
-    e.preventDefault();
-    const myForm = document.getElementById('myform');
+const updatePetInStore = () => {
     const id = document.getElementById('update-pet-in-store').value;
-    const FD = new FormData(myForm);
-    const searchParam = new URLSearchParams();
-    for (const pair of FD) {
-        searchParam.append(pair[0], pair[1]);
+    const updateName = document.getElementById('update-pet-in-store-name').value;
+    if (id === '') {
+        document.write('Please enter pet id');
+    } else if (updateName === '') {
+        document.getElementById('result4').innerHTML = 'Please enter pet name';
+        // document.write('Please enter pet name');
+
+    } else {
+        const url = `https://petstore.swagger.io/v2/pet/${id}`;
+        fetch(url, {
+            method: 'POST',
+            body: new URLSearchParams(`name=${updateName}
+        &status=${document.getElementById('update-pet-in-store-status').value}`),
+        }).then(response => {
+            document.getElementById('result4').innerHTML = 'UPDATED.<br> 🔄PAGE WILL REFRESH AFTER 3sec';
+            setTimeout(() => { location.reload(); }, 3000);
+        }
+        ).catch(error => {
+            return error.json().then(err => {
+                document.write(JSON.stringify(err));
+            }
+            );
+        });
     }
-    const url = 'https://petstore.swagger.io/v2/pet/' + id;
-    fetch(url, {
-        method: 'POST',
-        body: searchParam
-    }).then(response => {
-        return response.text();
-    }).then(text => {
-        document.getElementById('result3').innerHTML = text;
-    }
-    ).catch(error => {
-        var error = JSON.stringify(err.message);
-        document.getElementById('result3').innerHTML = error;
-    });
 }
 
 // MODAL OPTIONS CODE STARTS HERE

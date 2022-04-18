@@ -168,6 +168,10 @@ label{
     color:rgb(255, 255, 255);
     text-shadow: 0 5px 10px rgb(4, 57, 1);
 }
+#result4{
+        color:rgb(255, 255, 255);
+        text-shadow: 0 5px 10px rgb(4, 57, 1);
+}
 .close{
     position: absolute;
     top: 0;
