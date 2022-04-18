@@ -131,7 +131,7 @@ const deletePetById = () => {
 }
 
 const updatePetInStore = () => {
-    function verifyId(input) {
+    async function verifyId(input) {
         return fetch('https://petstore.swagger.io/v2/pet/' + input, {
             method: 'GET',
             headers: {},
