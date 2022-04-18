@@ -131,10 +131,22 @@ const deletePetById = () => {
 }
 
 const updatePetInStore = () => {
+    function verifyId(input) {
+        return fetch('https://petstore.swagger.io/v2/pet/' + input, {
+            method: 'GET',
+            headers: {},
+            body: JSON.stringify({})
+        }).then(response => {
+            if (response.status === 200) { return true; }
+            return false;
+        })
+    }
     const id = document.getElementById('update-pet-in-store').value;
     const updateName = document.getElementById('update-pet-in-store-name').value;
     if (id === '') {
-        document.write('Please enter pet id');
+        document.getElementById('result4').innerHTML = 'Please enter pet id';
+    } else if (verifyId(id) === false) {
+        document.getElementById('result4').innerHTML = 'Entered ID is not valid';
     } else if (updateName === '') {
         document.getElementById('result4').innerHTML = 'Please enter pet name';
         // document.write('Please enter pet name');
@@ -143,15 +155,15 @@ const updatePetInStore = () => {
         const url = `https://petstore.swagger.io/v2/pet/${id}`;
         fetch(url, {
             method: 'POST',
-            body: new URLSearchParams(`name=${updateName}
-        &status=${document.getElementById('update-pet-in-store-status').value}`),
+            body: new URLSearchParams('name=' + updateName +
+                '&status=' + document.getElementById('update-pet-in-store-status').value),
         }).then(response => {
             document.getElementById('result4').innerHTML = 'UPDATED.<br> 🔄PAGE WILL REFRESH AFTER 3sec';
             setTimeout(() => { location.reload(); }, 3000);
         }
         ).catch(error => {
             return error.json().then(err => {
-                document.write(JSON.stringify(err));
+                document.write(JSON.stringify(err.text()));
             }
             );
         });
