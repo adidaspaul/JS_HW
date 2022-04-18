@@ -144,13 +144,51 @@
       <!-- ADD NEW PET END ------------------------------------>
 
       <!-- UPDATE PET IN STORE START ---------------------------------->
-      <button class="button-82-pushable" role="button">
+      <button class="button-82-pushable" role="button" id="updatePetInStore">
         <span class="button-82-shadow"></span
         ><span class="button-82-edge"></span
         ><span class="button-82-front text"
           >UPDATE PET IN STORE<br /><i>(with form data)</i></span
         >
       </button>
+      <dialog class="modal-update-pet-in-store" id="result4">
+        🐦<br />
+        <label class="form" for="update-pet-in-store-id"> TYPE PET ID </label>
+        <input
+          type="number"
+          id="update-pet-in-store"
+          name="update-pet-in-store-id"
+          method="dialog"
+        /><br />
+        <form id="myform">
+          <label class="form" for="update-pet-in-store-name"
+            >🐦PET'S NAME
+          </label>
+          <input
+            type="text"
+            id="update-pet-in-store-name"
+            name="update-pet-in-store-name"
+            method="dialog"
+          /><br />
+          <label class="form" for="update-pet-in-store-status">
+            🐦PET'S STATUS
+          </label>
+          <select
+            id="update-pet-in-store-status"
+            name="update-pet-in-store-status"
+            method="dialog"
+          >
+            <option value="available">available</option>
+            <option value="pending">pending</option>
+            <option value="sold">sold</option>
+          </select>
+          <br />
+          <button id="update-pet-in-store-button">Update Pet</button>
+        </form>
+        <br />
+        <p id="result3"></p>
+        <span class="close" id="closeUpdatePetInStore">&times;</span>
+      </dialog>
       <!-- UPDATE PET IN STORE END ---------------------------------->
 
       <!--UPLOAD IMAGE START -------------------------->
