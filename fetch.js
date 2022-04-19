@@ -161,7 +161,7 @@ const updatePetInStore = () => {
             body: new URLSearchParams('name=' + updateName +
                 '&status=' + document.getElementById('update-pet-in-store-status').value),
         }).then(response => {
-            return document.getElementById('result4').innerHTML = 'UPDATED.<br> 🔄PAGE WILL REFRESH AFTER 3sec';
+            document.getElementById('result4').innerHTML = 'UPDATED.<br> 🔄PAGE WILL REFRESH AFTER 3sec';
             setTimeout(() => { location.reload(); }, 3000);
         }
         ).catch(error => {
@@ -213,6 +213,52 @@ const uploadPetPhoto = (e) => {
         });
     }
 }
+const placePetOrder = () => {
+    var order = {
+        id: generateRandomId(),
+        petId: document.getElementById('purchase-order-pet-id').value,
+        quantity: document.getElementById('order-quantity').value,
+        shipDate: new Date().toISOString(),
+        status: 'placed',
+        complete: true
+    };
+    sendRequest('POST', 'https://petstore.swagger.io/v2/store/order', order).then(data => {
+        document.getElementById('result6').innerHTML = (JSON.stringify('Your Order ID' + data.id
+            + '<br>' + 'pet\'s ID--> ' + data.petId + "<br>" + 'status --> ' + data.status + '<br>'
+            + 'quantity--> ' + data.quantity + '<br>' + 'shipDate ' + data.shipDate)) + '<br>' + 'Order placed.<br> 🔄PAGE WILL REFRESH AFTER 5sec';
+        setTimeout(() => { location.reload(); }, 5000);
+    }
+    ).catch(error => {
+        return error.json().then(err => {
+            document.write(JSON.stringify(err.text()));
+        }
+        );
+    }
+    );
+}
+const findOrderById = () => {
+    var orderId = document.getElementById('find-order-id').value;
+    if (orderId === '') {
+        document.getElementById('result7').innerHTML = 'Please enter order id';
+    } else if (!verifyId(orderId)) {
+        document.getElementById('result7').innerHTML = 'Entered ID is not valid';
+    } else {
+        sendRequest('GET', 'https://petstore.swagger.io/v2/store/order/' + orderId).then(data => {
+            document.getElementById('result7').innerHTML = (JSON.stringify('Order ID' + data.id
+                + '<br>' + 'pet\'s ID--> ' + data.petId + "<br>" + 'status --> ' + data.status + '<br>'
+                + 'quantity--> ' + data.quantity + '<br>' + 'shipDate ' + data.shipDate)) + '<br>' + 'Order found.<br> 🔄PAGE WILL REFRESH AFTER 5sec';
+            setTimeout(() => { location.reload(); }, 5000);
+        }
+        ).catch(error => {
+            return error.json().then(err => {
+                document.write(JSON.stringify(err.text()));
+            }
+            );
+        }
+        );
+    }
+}
+
 
 
 
@@ -320,6 +366,17 @@ closeDeleteConfirmationModal.addEventListener('click', () => {
 closedDeleteConfirmationModal.addEventListener('click', () => {
     deletePetConfirmationModal.close();
 });
+// PLACE ORDER MODAL---------------------------------------
+const modalPlaceOrder = document.querySelector('.modal-place-order');
+const openModalPlaceOrder = document.querySelector('#placeOrder');
+const closeModalPlaceOrder = document.querySelector('#closePlaceOrder');
+//OPEN/CLOSE PLACE ORDER MODAL
+openModalPlaceOrder.addEventListener('click', () => {
+    modalPlaceOrder.showModal();
+});
+closeModalPlaceOrder.addEventListener('click', () => {
+    modalPlaceOrder.close();
+});
 
 
 
@@ -335,6 +392,7 @@ const addPetButton = document.getElementById('add-pet-button');
 const deleteByIdButton = document.getElementById('delete-confirmation-button');
 const updatePetInStoreButton = document.getElementById('update-pet-in-store-button');
 const uploadPetPhotoButton = document.getElementById('upload-pet-photo-button');
+const placePetOrderButton = document.getElementById('place-order-for-pet-button');
 //EVENT LISTENERS(BUTTONS) TO SEND REQUESTS-- CODE STARTS HERE
 
 findPetById.addEventListener('click', findPetByIdData);
@@ -344,3 +402,5 @@ addPetButton.addEventListener('click', addPet);
 deleteByIdButton.addEventListener('click', deletePetById);
 updatePetInStoreButton.addEventListener('click', updatePetInStore);
 uploadPetPhotoButton.addEventListener('click', uploadPetPhoto);
+placePetOrderButton.addEventListener('click', placePetOrder);
+

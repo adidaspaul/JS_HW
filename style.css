@@ -161,6 +161,18 @@ border-radius: 25px;
     background: linear-gradient(45deg, green, blue);
     opacity: .4;
 }
+.modal-place-order{
+    padding:1em;
+    max-width: 50ch;
+    margin: 1em auto;
+    background: radial-gradient(orange, rgb(231, 8, 212));
+    position: fixed;
+    border-radius: 25px;
+}
+.modal-place-order::backdrop{
+    background: linear-gradient(45deg, green, blue);
+    opacity: .4;
+}
 
 label{
     font-size: 1.5em;
@@ -301,6 +313,15 @@ dialog[open] {
     opacity: 100;
 }
 #update-pet-in-store-button{
+    border: 20;
+    border-radius: 25px;
+    cursor: pointer;
+    background: rgb(124, 252, 4);
+    color: rgb(4, 4, 4);
+    font-weight: 700;
+    opacity: 100;
+}
+#place-order-for-pet-button{
     border: 20;
     border-radius: 25px;
     cursor: pointer;
