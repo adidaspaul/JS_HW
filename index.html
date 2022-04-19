@@ -21,13 +21,13 @@
         <span class="button-82-shadow"></span
         ><span class="button-82-edge"></span
         ><span class="button-82-front text"
-          >FIND A PET <br /><i>(by ID)</i></span
+          >FIND A PET 🔍<br /><i>(by ID)</i></span
         >
       </button>
       <dialog class="modal-pet-id">
         <label for="pet-id">TYPE PET ID 🐶</label>
         <input type="number" id="pet-id" name="pet-id" method="dialog" />
-        <button id="find-pet-by-id-button">Find Pet</button>
+        <button id="find-pet-by-id-button">Find Pet🔍</button>
         <p id="result"></p>
         <span class="close">&times;</span>
       </dialog>
@@ -38,7 +38,7 @@
         <span class="button-82-shadow"></span
         ><span class="button-82-edge"></span
         ><span class="button-82-front text"
-          >FIND A PET <br /><i>(by STATUS)</i></span
+          >FIND A PET🔍 <br /><i>(by STATUS)</i></span
         >
       </button>
       <dialog class="modal-pet-status">
@@ -48,7 +48,7 @@
           <option value="pending">pending</option>
           <option value="sold">sold</option>
         </select>
-        <button id="find-pet-by-status-button">Find Pet</button>
+        <button id="find-pet-by-status-button">Find Pet🔍</button>
         <span class="close" id="close">&times;</span>
       </dialog>
       <!-- FIND BY STATUS END -->
@@ -57,7 +57,7 @@
       <button class="button-82-pushable" role="button" id="updatePet">
         <span class="button-82-shadow"></span
         ><span class="button-82-edge"></span
-        ><span class="button-82-front text">UPDATE EXISTING <br />PET</span>
+        ><span class="button-82-front text">UPDATE EXISTING🔄 <br />PET</span>
       </button>
       <dialog class="modal-update-pet" id="result2">
         <label class="form" for="updatePet-id">TYPE PET ID </label>
@@ -109,7 +109,7 @@
       <button class="button-82-pushable" role="button" id="addPet">
         <span class="button-82-shadow"></span
         ><span class="button-82-edge"></span
-        ><span class="button-82-front text">ADD A NEW <br />PET</span>
+        ><span class="button-82-front text">ADD A NEW ⬇️<br />PET</span>
       </button>
       <dialog class="modal-add-pet" id="result3">
         <label class="form" for="addPetName">TYPE PET NAME </label>
@@ -148,7 +148,7 @@
         <span class="button-82-shadow"></span
         ><span class="button-82-edge"></span
         ><span class="button-82-front text"
-          >UPDATE PET IN STORE<br /><i>(with form data)</i></span
+          >UPDATE PET IN STORE🔄<br /><i>(with form data)</i></span
         >
       </button>
       <dialog class="modal-update-pet-in-store">
@@ -230,7 +230,7 @@
         <span class="button-83-shadow"></span
         ><span class="button-83-edge"></span
         ><span class="button-83-front text"
-          >DELETE A PET <br /><i>(by ID)</i></span
+          >DELETE A PET❎ <br /><i>(by ID)</i></span
         >
       </button>
       <dialog class="modal-delete-pet-by-id">
@@ -263,7 +263,7 @@
         <span class="button-81-shadow"></span
         ><span class="button-81-edge"></span
         ><span class="button-81-front text"
-          >PLACE AN ORDER FOR A <br />PET</span
+          >PLACE AN ORDER FOR A <br />PET🛒</span
         >
       </button>
       <dialog class="modal-place-order">
@@ -275,7 +275,7 @@
           method="dialog"
         />
         <br />
-        <label id="label" for="order-quantity">PUT QUANTITY</label>
+        <label id="label" for="order-quantity">PUT QUANTITY👝</label>
         <input
           type="number"
           id="order-quantity"
@@ -287,16 +287,33 @@
         <span class="close" id="closePlaceOrder">&times;</span>
       </dialog>
       <!-- PLACE ORDER FOR A PET END -->
-      <button class="button-81-pushable" role="button" id="">
+
+      <!-- FIND ORDER BY ID START ------------------------>
+      <button class="button-81-pushable" role="button" id="findOrderById">
         <span class="button-81-shadow"></span
         ><span class="button-81-edge"></span
         ><span class="button-81-front text"
-          >FIND PURCHASE ORDER <br />
+          >FIND PURCHASE ORDER🔍 <br />
           <i>by ID</i></span
         >
       </button>
+      <dialog class="modal-find-order-by-id">
+        <label id="label" for="find-order-by-id">TYPE ORDER ID </label>
+        <input
+          type="number"
+          id="find-order-by-id"
+          name="find-order-by-id"
+          method="dialog"
+        />
+        <br />
+        <button id="find-order-by-id-button">FIND ORDER🔍</button>
+        <p id="result7"></p>
+        <span class="close" id="closeFindOrderById">&times;</span>
+      </dialog>
+      <!-- FIND ORDER BY ID END -------------------------->
 
-      <button class="button-81-pushable" role="button">
+      <!-- PET INVENTORY BY STATUS START ------------------------------->
+      <button class="button-81-pushable" role="button" id="invetoryStatus">
         <span class="button-81-shadow"></span
         ><span class="button-81-edge"></span
         ><span class="button-81-front text"
@@ -304,11 +321,17 @@
           <i>by STATUS</i></span
         >
       </button>
+      <dialog class="modal-inventory-status">
+        <p id="result8"></p>
+        <span class="close" id="closeInventoryStatus">&times;</span>
+      </dialog>
+      <!-- PET INVENTORY BY STATUS END ------------------------------->
+
       <button class="button-83-pushable" role="button">
         <span class="button-83-shadow"></span
         ><span class="button-83-edge"></span
         ><span class="button-83-front text"
-          >DELETE PURCHASE ORDER <br /><i>(by ID)</i></span
+          >DELETE PURCHASE ORDER❎ <br /><i>(by ID)</i></span
         >
       </button>
     </section>
@@ -319,14 +342,14 @@
         ><span class="button-84-edge"></span
         ><span class="button-84-front text"
           >CREATE LIST OF USERS <br />
-          <i>with Array</i></span
+          <i>with Array📁</i></span
         >
       </button>
       <button class="button-84-pushable" role="button">
         <span class="button-84-shadow"></span
         ><span class="button-84-edge"></span
         ><span class="button-84-front text"
-          >CREATE LIST OF USERS <br />
+          >CREATE LIST OF USERS🗃 <br />
           <i>with List</i></span
         >
       </button>
@@ -334,35 +357,35 @@
         <span class="button-84-shadow"></span
         ><span class="button-84-edge"></span
         ><span class="button-84-front text"
-          >GET USER<br />
+          >GET USER🔍<br />
           <i>by USERNAME</i></span
         >
       </button>
       <button class="button-84-pushable" role="button">
         <span class="button-84-shadow"></span
         ><span class="button-84-edge"></span
-        ><span class="button-84-front text">UPDATE USER</span>
+        ><span class="button-84-front text">UPDATE USER🔄</span>
       </button>
       <button class="button-84-pushable" role="button">
         <span class="button-84-shadow"></span
         ><span class="button-84-edge"></span
-        ><span class="button-84-front text">CREATE USER</span>
+        ><span class="button-84-front text">CREATE USER 🙋‍♂️</span>
       </button>
       <button class="button-84-pushable" role="button">
         <span class="button-84-shadow"></span
         ><span class="button-84-edge"></span
-        ><span class="button-84-front text">USER LOGIN</span>
+        ><span class="button-84-front text">USER LOGIN⤵️</span>
       </button>
       <button class="button-84-pushable" role="button">
         <span class="button-84-shadow"></span
         ><span class="button-84-edge"></span
-        ><span class="button-84-front text">USER LOGOUT</span>
+        ><span class="button-84-front text">USER LOGOUT⤴️</span>
       </button>
       <button class="button-83-pushable" role="button">
         <span class="button-83-shadow"></span
         ><span class="button-83-edge"></span
         ><span class="button-83-front text"
-          >DELETE USER <br /><i>(by USERNAME)</i></span
+          >DELETE USER❎ <br /><i>(by USERNAME)</i></span
         >
       </button>
     </div>

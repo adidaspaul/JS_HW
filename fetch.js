@@ -225,7 +225,7 @@ const placePetOrder = () => {
     sendRequest('POST', 'https://petstore.swagger.io/v2/store/order', order).then(data => {
         document.getElementById('result6').innerHTML = (JSON.stringify('Your Order ID' + data.id
             + '<br>' + 'pet\'s ID--> ' + data.petId + "<br>" + 'status --> ' + data.status + '<br>'
-            + 'quantity--> ' + data.quantity + '<br>' + 'shipDate ' + data.shipDate)) + '<br>' + 'Order placed.<br> 🔄PAGE WILL REFRESH AFTER 5sec';
+            + 'quantity--> ' + data.quantity + '<br>' + 'shipDate ' + data.shipDate)) + '<br>' + '🛒Order placed.<br> 🔄PAGE WILL REFRESH AFTER 5sec';
         setTimeout(() => { location.reload(); }, 5000);
     }
     ).catch(error => {
@@ -237,7 +237,7 @@ const placePetOrder = () => {
     );
 }
 const findOrderById = () => {
-    var orderId = document.getElementById('find-order-id').value;
+    var orderId = document.getElementById('find-order-by-id').value;
     if (orderId === '') {
         document.getElementById('result7').innerHTML = 'Please enter order id';
     } else if (!verifyId(orderId)) {
@@ -258,7 +258,19 @@ const findOrderById = () => {
         );
     }
 }
-
+const inventory = () => {
+    sendRequest('GET', 'https://petstore.swagger.io/v2/store/inventory').then(data => {
+        document.getElementById('result8').innerHTML = (JSON.stringify('Sold->' + data.sold + '<br>'
+            + 'Pending->' + data.pending + '<br>' + 'Available-> ' + data.available)) + '<br>' + '🛒Inventory found.<br>';
+    }
+    ).catch(error => {
+        return error.json().then(err => {
+            document.write(JSON.stringify(err.text()));
+        }
+        );
+    }
+    );
+}
 
 
 
@@ -377,6 +389,47 @@ openModalPlaceOrder.addEventListener('click', () => {
 closeModalPlaceOrder.addEventListener('click', () => {
     modalPlaceOrder.close();
 });
+//FIND ORDER BY ID MODAL
+const modalFindOrderById = document.querySelector('.modal-find-order-by-id');
+const openModalFindOrderById = document.querySelector('#findOrderById');
+const closeModalFindOrderById = document.querySelector('#closeFindOrderById');
+//OPEN/CLOSE FIND ORDER BY ID MODAL
+openModalFindOrderById.addEventListener('click', () => {
+    modalFindOrderById.showModal();
+}
+);
+closeModalFindOrderById.addEventListener('click', () => {
+    modalFindOrderById.close();
+}
+);
+//SHOW INVENTORY MODAL
+const modalShowInventory = document.querySelector('.modal-inventory-status');
+const openModalShowInventory = document.querySelector('#invetoryStatus');
+const closeModalShowInventory = document.querySelector('#closeInventoryStatus');
+//OPEN/CLOSE SHOW INVENTORY MODAL
+openModalShowInventory.addEventListener('click', () => {
+    modalShowInventory.showModal();
+}
+);
+closeModalShowInventory.addEventListener('click', () => {
+    modalShowInventory.close();
+}
+);
+// //DELETE ORDER MODAL
+// const modalDeleteOrder = document.querySelector('.modal-delete-order');
+// const openModalDeleteOrder = document.querySelector('#deleteOrder');
+// const closeModalDeleteOrder = document.querySelector('#closeDeleteOrder');
+// //OPEN/CLOSE DELETE ORDER MODAL
+// openModalDeleteOrder.addEventListener('click', () => {
+//     modalDeleteOrder.showModal();
+// }
+// );
+// closeModalDeleteOrder.addEventListener('click', () => {
+//     modalDeleteOrder.close();
+// }
+// );
+
+
 
 
 
@@ -393,6 +446,8 @@ const deleteByIdButton = document.getElementById('delete-confirmation-button');
 const updatePetInStoreButton = document.getElementById('update-pet-in-store-button');
 const uploadPetPhotoButton = document.getElementById('upload-pet-photo-button');
 const placePetOrderButton = document.getElementById('place-order-for-pet-button');
+const findOrderByIdButton = document.getElementById('find-order-by-id-button');
+const petInventory = document.getElementById('invetoryStatus');
 //EVENT LISTENERS(BUTTONS) TO SEND REQUESTS-- CODE STARTS HERE
 
 findPetById.addEventListener('click', findPetByIdData);
@@ -403,4 +458,6 @@ deleteByIdButton.addEventListener('click', deletePetById);
 updatePetInStoreButton.addEventListener('click', updatePetInStore);
 uploadPetPhotoButton.addEventListener('click', uploadPetPhoto);
 placePetOrderButton.addEventListener('click', placePetOrder);
+findOrderByIdButton.addEventListener('click', findOrderById);
+petInventory.addEventListener('click', inventory);
 
