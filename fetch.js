@@ -20,7 +20,43 @@ const sendRequest = (method, url, data) => {
         }
         return response.json();
     });
-};
+}
+//SERVICE FUNCTIONS
+function categoryIdCheck(value) {
+    switch (value) {
+        case 'dog':
+            return 1;
+            break;
+        case 'cat':
+            return 2;
+            break;
+        case 'bird':
+            return 3;
+            break;
+        case 'other':
+            return 4;
+            break;
+        default:
+            return 4;
+            break;
+    }
+}
+function verifyId(input) {
+    return fetch('https://petstore.swagger.io/v2/pet/' + input, {
+        method: 'GET',
+        headers: {},
+        body: null
+    }).then(response => {
+        if (response.status >= 400) { return false; }
+        return true;
+    })
+}
+function generateRandomId(maxLimit = 900) {
+    let rand = Math.random() * maxLimit;
+    console.log(rand);
+    rand = Math.floor(rand);
+    return rand;
+}
 //PET FUNCTIONS
 const findPetByIdData = () => {
 
@@ -29,8 +65,7 @@ const findPetByIdData = () => {
         let name = data.tags[0].name;
         document.getElementById('result').innerHTML = (JSON.stringify(data.id + '<br>' + 'PET\'S NAME--> ' + data.name + "<br>" + 'STORE STATUS☑️ --> ' + data.status
             + '<br>' + 'photo--> ' + data.photoUrls[0] + '<br>' + 'TAG--> ' + name + '<br>' + 'CATEGORY--> ' + data.category.name));
-        // document.write(JSON.stringify(data.id + '<br>' + 'pet\'s name--> ' + data.name + "<br>" + 'status --> ' + data.status
-        //     + '<br>' + 'photo--> ' + data.photoUrls[0]));
+
     });
 }
 
@@ -73,32 +108,9 @@ const updatePet = () => {
         setTimeout(() => { location.reload(); }, 5000);
     });
 }
-function categoryIdCheck(value) {
-    switch (value) {
-        case 'dog':
-            return 1;
-            break;
-        case 'cat':
-            return 2;
-            break;
-        case 'bird':
-            return 3;
-            break;
-        case 'other':
-            return 4;
-            break;
-        default:
-            return 4;
-            break;
-    }
-}
+
 const addPet = () => {
-    function generateRandomId(maxLimit = 900) {
-        let rand = Math.random() * maxLimit;
-        console.log(rand);
-        rand = Math.floor(rand);
-        return rand;
-    }
+
     var pet = {
         id: generateRandomId(),
         category: {
@@ -131,25 +143,16 @@ const deletePetById = () => {
 }
 
 const updatePetInStore = () => {
-    async function verifyId(input) {
-        return fetch('https://petstore.swagger.io/v2/pet/' + input, {
-            method: 'GET',
-            headers: {},
-            body: JSON.stringify({})
-        }).then(response => {
-            if (response.status === 200) { return true; }
-            return false;
-        })
-    }
+
     const id = document.getElementById('update-pet-in-store').value;
     const updateName = document.getElementById('update-pet-in-store-name').value;
     if (id === '') {
         document.getElementById('result4').innerHTML = 'Please enter pet id';
-    } else if (verifyId(id) === false) {
+    } else if (!verifyId(id)) {
         document.getElementById('result4').innerHTML = 'Entered ID is not valid';
+
     } else if (updateName === '') {
         document.getElementById('result4').innerHTML = 'Please enter pet name';
-        // document.write('Please enter pet name');
 
     } else {
         const url = `https://petstore.swagger.io/v2/pet/${id}`;
@@ -158,7 +161,7 @@ const updatePetInStore = () => {
             body: new URLSearchParams('name=' + updateName +
                 '&status=' + document.getElementById('update-pet-in-store-status').value),
         }).then(response => {
-            document.getElementById('result4').innerHTML = 'UPDATED.<br> 🔄PAGE WILL REFRESH AFTER 3sec';
+            return document.getElementById('result4').innerHTML = 'UPDATED.<br> 🔄PAGE WILL REFRESH AFTER 3sec';
             setTimeout(() => { location.reload(); }, 3000);
         }
         ).catch(error => {
@@ -170,7 +173,53 @@ const updatePetInStore = () => {
     }
 }
 
+const uploadPetPhoto = (e) => {
+    e.preventDefault();
+    var petId = document.getElementById('upload-pet-photo-id').value;
+    console.log(verifyId(petId));
+    if (!verifyId(petId)) {
+        document.getElementById('result5').innerHTML = 'Entered ID is not valid';
+        return null;
+    }
+    var photo = document.getElementById('upload-pet-photo').files[0];
+    if (petId === '') {
+        document.getElementById('result5').innerHTML = 'Please enter valid pet id';
+        return null;
+    }
+    else {
+        var FD = new FormData();
+        let h = new Headers();
+        const url = `https://petstore.swagger.io/v2/pet/${petId}/uploadImage`;
+        FD.append('file', photo, 'avatar.png');
+        h.append('Accept', 'application/json');
+        fetch(url, {
+            method: 'POST',
+            body: FD,
+        }).then(response => {
+            if (response.status >= 400) {
+                return response.json().then(err => {
+                    document.write(JSON.stringify(err.message));
+                }
+                );
+            }
+            document.getElementById('result5').innerHTML = 'UPDATED.<br> 🔄PAGE WILL REFRESH AFTER 3sec';
+            setTimeout(() => { location.reload(); }, 3000);
+        }
+        ).catch(error => {
+            return error.json().then(err => {
+                document.write(JSON.stringify(err.text()));
+            }
+            );
+        });
+    }
+}
+
+
+
+
+
 // MODAL OPTIONS CODE STARTS HERE
+
 //FIND PET ID MODAL
 const modalPetId = document.querySelector('.modal-pet-id');
 const openModalPetId = document.querySelector('#findPetById');
@@ -232,6 +281,19 @@ closeModalUpdatePetInStore.addEventListener('click', () => {
     modalUpdatePetInStore.close();
 });
 
+//UPLOAD PET PHOTO MODAL
+const modalUploadPetPhoto = document.querySelector('.modal-upload-pet-photo');
+const openModalUploadPetPhoto = document.querySelector('#uploadPetPhoto');
+const closeModalUploadPetPhoto = document.querySelector('#closeUploadPetPhoto');
+//OPEN/CLOSE UPLOAD PET PHOTO MODAL
+openModalUploadPetPhoto.addEventListener('click', () => {
+    modalUploadPetPhoto.showModal();
+}
+);
+closeModalUploadPetPhoto.addEventListener('click', () => {
+    modalUploadPetPhoto.close();
+}
+);
 
 
 //DELETE PET ID MODAL
@@ -272,6 +334,7 @@ const updatePetButton = document.getElementById('update-pet-button');
 const addPetButton = document.getElementById('add-pet-button');
 const deleteByIdButton = document.getElementById('delete-confirmation-button');
 const updatePetInStoreButton = document.getElementById('update-pet-in-store-button');
+const uploadPetPhotoButton = document.getElementById('upload-pet-photo-button');
 //EVENT LISTENERS(BUTTONS) TO SEND REQUESTS-- CODE STARTS HERE
 
 findPetById.addEventListener('click', findPetByIdData);
@@ -280,4 +343,4 @@ updatePetButton.addEventListener('click', updatePet);
 addPetButton.addEventListener('click', addPet);
 deleteByIdButton.addEventListener('click', deletePetById);
 updatePetInStoreButton.addEventListener('click', updatePetInStore);
-
+uploadPetPhotoButton.addEventListener('click', uploadPetPhoto);

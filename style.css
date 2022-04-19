@@ -149,6 +149,18 @@ border-radius: 25px;
     background: linear-gradient(45deg, rgb(116, 1, 1), rgb(44, 22, 1));
     opacity: .4;
 }
+.modal-upload-pet-photo{
+    padding:1em;
+    max-width: 50ch;
+    margin: 1em auto;
+    background: radial-gradient(orange, rgb(231, 8, 212));
+    position: fixed;
+    border-radius: 25px;
+}
+.modal-upload-pet-photo::backdrop{
+    background: linear-gradient(45deg, green, blue);
+    opacity: .4;
+}
 
 label{
     font-size: 1.5em;
@@ -275,6 +287,24 @@ dialog[open] {
     border-radius: 25px;
     cursor: pointer;
     background: rgb(148, 241, 144);
+    color: rgb(4, 4, 4);
+    font-weight: 700;
+    opacity: 100;
+}
+#upload-pet-photo-button{
+    border: 20;
+    border-radius: 25px;
+    cursor: pointer;
+    background: rgb(124, 252, 4);
+    color: rgb(4, 4, 4);
+    font-weight: 700;
+    opacity: 100;
+}
+#update-pet-in-store-button{
+    border: 20;
+    border-radius: 25px;
+    cursor: pointer;
+    background: rgb(124, 252, 4);
     color: rgb(4, 4, 4);
     font-weight: 700;
     opacity: 100;

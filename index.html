@@ -124,7 +124,7 @@
         </label>
         <select id="add-pet-category" name="add-pet-category" method="dialog">
           <option value="dog">dog</option>
-          <option value="cate">cat</option>
+          <option value="cat">cat</option>
           <option value="bird">bird</option>
           <option value="other">other</option>
         </select>
@@ -160,6 +160,7 @@
           id="update-pet-in-store"
           name="update-pet-in-store-id"
           method="dialog"
+          required
         /><br />
         <form id="myform">
           <label class="form" for="update-pet-in-store-name"
@@ -170,6 +171,7 @@
             id="update-pet-in-store-name"
             name="update-pet-in-store-name"
             method="dialog"
+            required
           /><br />
           <label class="form" for="update-pet-in-store-status">
             🐦PET'S STATUS
@@ -192,11 +194,35 @@
       <!-- UPDATE PET IN STORE END ---------------------------------->
 
       <!--UPLOAD IMAGE START -------------------------->
-      <button class="button-82-pushable" role="button">
+      <button class="button-82-pushable" role="button" id="uploadPetPhoto">
         <span class="button-82-shadow"></span
         ><span class="button-82-edge"></span
         ><span class="button-82-front text">UPLOAD PET <br />IMAGE</span>
       </button>
+      <dialog class="modal-upload-pet-photo">
+        <p id="result5"></p>
+        <label class="form" for="upload-pet-photo-id">TYPE PET 🆔</label>
+        <input
+          type="number"
+          id="upload-pet-photo-id"
+          name="upload-pet-photo-id"
+          method="dialog"
+        /><br />
+        <form id="myForm1">
+          <label class="form" for="upload-pet-photo">CHOOSE PET PHOTO 🖼</label>
+          <input
+            type="file"
+            id="upload-pet-photo"
+            name="upload-pet-photo"
+            accept="image/x-png"
+            multiple
+            required
+            method="dialog"
+          /><br />
+          <button id="upload-pet-photo-button">Upload Pet Photo</button>
+        </form>
+        <span class="close" id="closeUploadPetPhoto">&times;</span>
+      </dialog>
       <!--UPLOAD IMAGE END -------------------------->
 
       <!-- DELETE PET START ---------------------------------->
