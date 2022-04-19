@@ -27,7 +27,7 @@ const findPetByIdData = () => {
     var petId = document.getElementById('pet-id').value;
     sendRequest('GET', 'https://petstore.swagger.io/v2/pet/' + petId).then(data => {
         let name = data.tags[0].name;
-        document.getElementById('result').innerHTML = (JSON.stringify(data.id + '<br>' + 'PET\'S NAME--> ' + data.name + "<br>" + 'STORE STATUS --> ' + data.status
+        document.getElementById('result').innerHTML = (JSON.stringify(data.id + '<br>' + 'PET\'S NAME--> ' + data.name + "<br>" + 'STORE STATUS☑️ --> ' + data.status
             + '<br>' + 'photo--> ' + data.photoUrls[0] + '<br>' + 'TAG--> ' + name + '<br>' + 'CATEGORY--> ' + data.category.name));
         // document.write(JSON.stringify(data.id + '<br>' + 'pet\'s name--> ' + data.name + "<br>" + 'status --> ' + data.status
         //     + '<br>' + 'photo--> ' + data.photoUrls[0]));
