@@ -9,7 +9,7 @@ const sendRequest = (method, url, data) => {
         if (response.status >= 400) {
             return response.json().then(errData => {
                 if (response.status === 404) {
-                    document.write(JSON.stringify("PET NOT FOUND"));
+                    document.write(JSON.stringify("NOT FOUND"));
                     setTimeout(() => { location.reload(); }, 2000);
                 } else {
                     let err = new Error('Things got out of hand');
@@ -271,7 +271,17 @@ const inventory = () => {
     }
     );
 }
-
+const deleteOrder = () => {
+    var orderId = document.getElementById('delete-order-id').value;
+    if (orderId === '') {
+        document.getElementById('result9').innerHTML = 'Please enter order id';
+    } else {
+        sendRequest('DELETE', 'https://petstore.swagger.io/v2/store/order/' + orderId).then(data => {
+            document.getElementById('demo1').innerHTML = 'Order deleted.<br> 🔄PAGE WILL REFRESH AFTER 5sec';
+            setTimeout(() => { location.reload(); }, 5000);
+        });
+    }
+}
 
 
 
@@ -327,6 +337,8 @@ openModalAddPet.addEventListener('click', () => {
 closeModalAddPet.addEventListener('click', () => {
     modalAddPet.close();
 });
+
+
 // UPDATE PET IN STORE MODAL
 const modalUpdatePetInStore = document.querySelector('.modal-update-pet-in-store');
 const openModalUpdatePetInStore = document.querySelector('#updatePetInStore');
@@ -338,6 +350,7 @@ openModalUpdatePetInStore.addEventListener('click', () => {
 closeModalUpdatePetInStore.addEventListener('click', () => {
     modalUpdatePetInStore.close();
 });
+
 
 //UPLOAD PET PHOTO MODAL
 const modalUploadPetPhoto = document.querySelector('.modal-upload-pet-photo');
@@ -378,6 +391,8 @@ closeDeleteConfirmationModal.addEventListener('click', () => {
 closedDeleteConfirmationModal.addEventListener('click', () => {
     deletePetConfirmationModal.close();
 });
+
+
 // PLACE ORDER MODAL---------------------------------------
 const modalPlaceOrder = document.querySelector('.modal-place-order');
 const openModalPlaceOrder = document.querySelector('#placeOrder');
@@ -389,6 +404,8 @@ openModalPlaceOrder.addEventListener('click', () => {
 closeModalPlaceOrder.addEventListener('click', () => {
     modalPlaceOrder.close();
 });
+
+
 //FIND ORDER BY ID MODAL
 const modalFindOrderById = document.querySelector('.modal-find-order-by-id');
 const openModalFindOrderById = document.querySelector('#findOrderById');
@@ -402,6 +419,8 @@ closeModalFindOrderById.addEventListener('click', () => {
     modalFindOrderById.close();
 }
 );
+
+
 //SHOW INVENTORY MODAL
 const modalShowInventory = document.querySelector('.modal-inventory-status');
 const openModalShowInventory = document.querySelector('#invetoryStatus');
@@ -415,19 +434,38 @@ closeModalShowInventory.addEventListener('click', () => {
     modalShowInventory.close();
 }
 );
-// //DELETE ORDER MODAL
-// const modalDeleteOrder = document.querySelector('.modal-delete-order');
-// const openModalDeleteOrder = document.querySelector('#deleteOrder');
-// const closeModalDeleteOrder = document.querySelector('#closeDeleteOrder');
-// //OPEN/CLOSE DELETE ORDER MODAL
-// openModalDeleteOrder.addEventListener('click', () => {
-//     modalDeleteOrder.showModal();
-// }
-// );
-// closeModalDeleteOrder.addEventListener('click', () => {
-//     modalDeleteOrder.close();
-// }
-// );
+
+
+//DELETE ORDER MODAL
+const modalDeleteOrder = document.querySelector('.modal-delete-order-by-id');
+const openModalDeleteOrder = document.querySelector('#deleteOrder');
+const closeModalDeleteOrder = document.querySelector('#closeDeleteOrder');
+const deleteConfirmationOrderModal = document.querySelector('#delete-confirmation-order');
+const openDeleteConfirmationOrderModal = document.querySelector('#delete-order-by-id-button');
+const closeDeleteConfirmationOrderModal = document.querySelector('#cancel-delete-confirmation-order-button');
+const closedDeleteConfirmationOrderModal = document.querySelector('#x-delete-confirmation-order-modal');
+//OPEN/CLOSE DELETE ORDER MODAL
+openModalDeleteOrder.addEventListener('click', () => {
+    modalDeleteOrder.showModal();
+}
+);
+closeModalDeleteOrder.addEventListener('click', () => {
+    modalDeleteOrder.close();
+}
+);
+openDeleteConfirmationOrderModal.addEventListener('click', () => {
+    deleteConfirmationOrderModal.showModal();
+}
+);
+closeDeleteConfirmationOrderModal.addEventListener('click', () => {
+    deleteConfirmationOrderModal.close();
+}
+);
+closedDeleteConfirmationOrderModal.addEventListener('click', () => {
+    deleteConfirmationOrderModal.close();
+}
+);
+
 
 
 
@@ -448,6 +486,7 @@ const uploadPetPhotoButton = document.getElementById('upload-pet-photo-button');
 const placePetOrderButton = document.getElementById('place-order-for-pet-button');
 const findOrderByIdButton = document.getElementById('find-order-by-id-button');
 const petInventory = document.getElementById('invetoryStatus');
+const deleteOrderButton = document.getElementById('delete-confirmation-order-button');
 //EVENT LISTENERS(BUTTONS) TO SEND REQUESTS-- CODE STARTS HERE
 
 findPetById.addEventListener('click', findPetByIdData);
@@ -460,4 +499,5 @@ uploadPetPhotoButton.addEventListener('click', uploadPetPhoto);
 placePetOrderButton.addEventListener('click', placePetOrder);
 findOrderByIdButton.addEventListener('click', findOrderById);
 petInventory.addEventListener('click', inventory);
+deleteOrderButton.addEventListener('click', deleteOrder);
 

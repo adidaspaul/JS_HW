@@ -149,6 +149,14 @@ border-radius: 25px;
     background: linear-gradient(45deg, rgb(116, 1, 1), rgb(44, 22, 1));
     opacity: .4;
 }
+.delete-confirmation{
+    padding:1em;
+    max-width: 50ch;
+    margin: 1em auto;
+    background: radial-gradient(rgb(227, 117, 86), rgb(142, 9, 9));
+    position: relative;
+    border-radius: 25px;
+}
 .modal-upload-pet-photo{
     padding:1em;
     max-width: 50ch;
@@ -198,6 +206,20 @@ border-radius: 25px;
     background: linear-gradient(45deg, green, blue);
     opacity: .4;
 }
+.modal-delete-order-by-id{
+    padding:1em;
+    max-width: 50ch;
+    margin: 1em auto;
+    background: radial-gradient(rgb(227, 117, 86), rgb(155, 84, 84));
+    position: fixed;
+    border-radius: 25px;
+
+}
+.modal-delete-order-by-id::backdrop {
+    background: linear-gradient(45deg, rgb(116, 1, 1), rgb(229, 255, 0));
+    opacity: .4;
+}
+
 
 label{
     font-size: 1.5em;
@@ -217,9 +239,13 @@ label{
     color:rgb(255, 255, 255);
     text-shadow: 0 5px 10px rgb(4, 57, 1);
 }
-#result4{
+.result{
         color:rgb(255, 255, 255);
         text-shadow: 0 5px 10px rgb(4, 57, 1);
+}
+#result3{
+    color:rgb(255, 255, 255);
+    text-shadow: 0 5px 10px rgb(4, 57, 1);
 }
 .close{
     position: absolute;
@@ -360,6 +386,33 @@ dialog[open] {
     border-radius: 25px;
     cursor: pointer;
     background: rgb(124, 252, 4);
+    color: rgb(4, 4, 4);
+    font-weight: 700;
+    opacity: 100;
+}
+#delete-order-by-id-button{
+    border: 20;
+    border-radius: 25px;
+    cursor: pointer;
+    background: rgb(245, 182, 87);
+    color: rgb(4, 4, 4);
+    font-weight: 700;
+    opacity: 100;
+}
+#delete-confirmation-order-button{
+    border: 20;
+    border-radius: 25px;
+    cursor: pointer;
+    background: rgb(245, 182, 87);
+    color: rgb(4, 4, 4);
+    font-weight: 700;
+    opacity: 100;
+}
+#cancel-delete-confirmation-order-button{
+    border: 20;
+    border-radius: 25px;
+    cursor: pointer;
+    background: rgb(245, 182, 87);
     color: rgb(4, 4, 4);
     font-weight: 700;
     opacity: 100;

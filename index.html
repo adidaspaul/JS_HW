@@ -152,7 +152,7 @@
         >
       </button>
       <dialog class="modal-update-pet-in-store">
-        <p id="result4"></p>
+        <p class="result" id="result4"></p>
         🐦<br />
         <label class="form" for="update-pet-in-store-id"> TYPE PET ID </label>
         <input
@@ -200,7 +200,7 @@
         ><span class="button-82-front text">UPLOAD PET <br />IMAGE</span>
       </button>
       <dialog class="modal-upload-pet-photo">
-        <p id="result5"></p>
+        <p clas="result" id="result5"></p>
         <label class="form" for="upload-pet-photo-id">TYPE PET 🆔</label>
         <input
           type="number"
@@ -245,7 +245,9 @@
         <span class="close" id="close-delete-pet">&times;</span>
       </dialog>
       <dialog class="delete-confirmation" id="delete-confirmation">
-        <p id="demo">Are you sure you want to delete this pet?</p>
+        <p class="result" id="demo">
+          Are you sure you want to delete this pet?
+        </p>
         <button class="confirmation" id="delete-confirmation-button">
           DELETE IN CONFIDENCE
         </button>
@@ -283,7 +285,7 @@
           method="dialog"
         />
         <button id="place-order-for-pet-button">PLACE ORDER</button>
-        <p id="result6"></p>
+        <p clas="result" id="result6"></p>
         <span class="close" id="closePlaceOrder">&times;</span>
       </dialog>
       <!-- PLACE ORDER FOR A PET END -->
@@ -307,7 +309,7 @@
         />
         <br />
         <button id="find-order-by-id-button">FIND ORDER🔍</button>
-        <p id="result7"></p>
+        <p class="result" id="result7"></p>
         <span class="close" id="closeFindOrderById">&times;</span>
       </dialog>
       <!-- FIND ORDER BY ID END -------------------------->
@@ -322,18 +324,49 @@
         >
       </button>
       <dialog class="modal-inventory-status">
-        <p id="result8"></p>
+        <p clas="result" id="result8"></p>
         <span class="close" id="closeInventoryStatus">&times;</span>
       </dialog>
       <!-- PET INVENTORY BY STATUS END ------------------------------->
 
-      <button class="button-83-pushable" role="button">
+      <!-- DELETE PURCHASE ORDER START ------------------------------->
+      <button class="button-83-pushable" role="button" id="deleteOrder">
         <span class="button-83-shadow"></span
         ><span class="button-83-edge"></span
         ><span class="button-83-front text"
           >DELETE PURCHASE ORDER❎ <br /><i>(by ID)</i></span
         >
       </button>
+      <dialog class="modal-delete-order-by-id">
+        <p class="result" id="result9"></p>
+        <label id="label" for="delete-order-id">TYPE ORDER ID </label>
+        <input
+          type="number"
+          id="delete-order-id"
+          name="delete-order-id"
+          method="dialog"
+        />
+        <button id="delete-order-by-id-button">DELETE</button>
+        <span class="close" id="closeDeleteOrder">&times;</span>
+      </dialog>
+      <dialog class="delete-confirmation" id="delete-confirmation-order">
+        <p class="result" id="demo1">
+          Are you sure you want to delete this order?
+        </p>
+        <button class="confirmation" id="delete-confirmation-order-button">
+          DELETE IN CONFIDENCE
+        </button>
+        <button
+          class="confirmation"
+          id="cancel-delete-confirmation-order-button"
+        >
+          CANCEL
+        </button>
+        <span class="close" id="x-delete-confirmation-order-modal"
+          >&times;</span
+        >
+      </dialog>
+      <!-- DELETE PURCHASE ORDER END ------------------------------->
     </section>
     <!-- USERS REQUESTS -->
     <div class="sector">
