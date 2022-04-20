@@ -219,10 +219,34 @@ border-radius: 25px;
     background: linear-gradient(45deg, rgb(116, 1, 1), rgb(229, 255, 0));
     opacity: .4;
 }
+.modal-create-user-array{
+    padding:1em;
+    max-width: 50ch;
+    margin: 1em auto;
+    background: radial-gradient(orange, rgb(231, 8, 212));
+    position: fixed;
+    border-radius: 25px;
+}
+.modal-create-user-array::backdrop{
+    background: linear-gradient(45deg, green, blue);
+    opacity: .4;
+}
+.modal-create-user-list{
+    padding:1em;
+    max-width: 50ch;
+    margin: 1em auto;
+    background: radial-gradient(orange, rgb(231, 8, 212));
+    position: fixed;
+    border-radius: 25px;
+}
+.modal-create-user-list::backdrop{
+    background: linear-gradient(45deg, green, blue);
+    opacity: .4;
+}
 
 
 label{
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-weight: bold;
     color: antiquewhite;
 }
@@ -299,43 +323,6 @@ dialog[open] {
     }
 }
 
-#find-pet-by-id-button {
-    border: 20;
-    border-radius: 25px;
-    cursor: pointer;
-    background: rgb(105, 245, 87);
-    color: rgb(4, 4, 4);
-    font-weight: 700;
-    opacity: 100;
-}
-
-#find-pet-by-status-button {
-    border: 20;
-    border-radius: 25px;
-    cursor: pointer;
-    background: rgb(105, 245, 87);
-    color: rgb(4, 4, 4);
-    font-weight: 700;
-    opacity: 100;
-}
-#update-pet-button{
-    border: 20;
-    border-radius: 25px;
-    cursor: pointer;
-    background: rgb(105, 245, 87);
-    color: rgb(4, 4, 4);
-    font-weight: 700;
-    opacity: 100;
-}
-#add-pet-button{
-        border: 20;
-        border-radius: 25px;
-        cursor: pointer;
-        background: rgb(105, 245, 87);
-        color: rgb(4, 4, 4);
-        font-weight: 700;
-        opacity: 100;
-}
 #delete-pet-by-id-button{
     border: 20;
     border-radius: 25px;
@@ -350,42 +337,6 @@ dialog[open] {
     border-radius: 25px;
     cursor: pointer;
     background: rgb(148, 241, 144);
-    color: rgb(4, 4, 4);
-    font-weight: 700;
-    opacity: 100;
-}
-#upload-pet-photo-button{
-    border: 20;
-    border-radius: 25px;
-    cursor: pointer;
-    background: rgb(124, 252, 4);
-    color: rgb(4, 4, 4);
-    font-weight: 700;
-    opacity: 100;
-}
-#update-pet-in-store-button{
-    border: 20;
-    border-radius: 25px;
-    cursor: pointer;
-    background: rgb(124, 252, 4);
-    color: rgb(4, 4, 4);
-    font-weight: 700;
-    opacity: 100;
-}
-#place-order-for-pet-button{
-    border: 20;
-    border-radius: 25px;
-    cursor: pointer;
-    background: rgb(124, 252, 4);
-    color: rgb(4, 4, 4);
-    font-weight: 700;
-    opacity: 100;
-}
-#find-order-by-id-button{
-    border: 20;
-    border-radius: 25px;
-    cursor: pointer;
-    background: rgb(124, 252, 4);
     color: rgb(4, 4, 4);
     font-weight: 700;
     opacity: 100;
@@ -413,6 +364,15 @@ dialog[open] {
     border-radius: 25px;
     cursor: pointer;
     background: rgb(245, 182, 87);
+    color: rgb(4, 4, 4);
+    font-weight: 700;
+    opacity: 100;
+}
+.buttons{
+    border: 20;
+    border-radius: 25px;
+    cursor: pointer;
+    background: rgb(124, 252, 4);
     color: rgb(4, 4, 4);
     font-weight: 700;
     opacity: 100;

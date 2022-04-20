@@ -27,7 +27,7 @@
       <dialog class="modal-pet-id">
         <label for="pet-id">TYPE PET ID 🐶</label>
         <input type="number" id="pet-id" name="pet-id" method="dialog" />
-        <button id="find-pet-by-id-button">Find Pet🔍</button>
+        <button class="buttons" id="find-pet-by-id-button">Find Pet🔍</button>
         <p id="result"></p>
         <span class="close">&times;</span>
       </dialog>
@@ -48,7 +48,9 @@
           <option value="pending">pending</option>
           <option value="sold">sold</option>
         </select>
-        <button id="find-pet-by-status-button">Find Pet🔍</button>
+        <button class="buttons" id="find-pet-by-status-button">
+          Find Pet🔍
+        </button>
         <span class="close" id="close">&times;</span>
       </dialog>
       <!-- FIND BY STATUS END -->
@@ -100,7 +102,7 @@
           name="pet-photo"
           method="dialog"
         /><br />
-        <button id="update-pet-button">Update Pet</button>
+        <button class="buttons" id="update-pet-button">Update Pet</button>
         <span class="close" id="closeUpdatePet">&times;</span>
       </dialog>
       <!-- UPDATE PET END ------------------------------------->
@@ -138,7 +140,7 @@
           name="add-pet-photo-url"
           method="dialog"
         /><br />
-        <button id="add-pet-button">Add Pet</button>
+        <button class="buttons" id="add-pet-button">Add Pet</button>
         <span class="close" id="closeAddPet">&times</span>
       </dialog>
       <!-- ADD NEW PET END ------------------------------------>
@@ -187,7 +189,9 @@
           </select>
           <br />
         </form>
-        <button id="update-pet-in-store-button">Update Pet</button>
+        <button class="buttons" id="update-pet-in-store-button">
+          Update Pet
+        </button>
         <br />
         <span class="close" id="closeUpdatePetInStore">&times;</span>
       </dialog>
@@ -219,7 +223,9 @@
             required
             method="dialog"
           /><br />
-          <button id="upload-pet-photo-button">Upload Pet Photo</button>
+          <button class="buttons" id="upload-pet-photo-button">
+            Upload Pet Photo
+          </button>
         </form>
         <span class="close" id="closeUploadPetPhoto">&times;</span>
       </dialog>
@@ -284,7 +290,9 @@
           name="order-quantity"
           method="dialog"
         />
-        <button id="place-order-for-pet-button">PLACE ORDER</button>
+        <button class="buttons" id="place-order-for-pet-button">
+          PLACE ORDER
+        </button>
         <p clas="result" id="result6"></p>
         <span class="close" id="closePlaceOrder">&times;</span>
       </dialog>
@@ -308,7 +316,9 @@
           method="dialog"
         />
         <br />
-        <button id="find-order-by-id-button">FIND ORDER🔍</button>
+        <button class="buttons" id="find-order-by-id-button">
+          FIND ORDER🔍
+        </button>
         <p class="result" id="result7"></p>
         <span class="close" id="closeFindOrderById">&times;</span>
       </dialog>
@@ -370,7 +380,8 @@
     </section>
     <!-- USERS REQUESTS -->
     <div class="sector">
-      <button class="button-84-pushable" role="button">
+      <!-- CREATE USER ARRAY START ------------------------------->
+      <button class="button-84-pushable" role="button" id="createUserArray">
         <span class="button-84-shadow"></span
         ><span class="button-84-edge"></span
         ><span class="button-84-front text"
@@ -378,7 +389,68 @@
           <i>with Array📁</i></span
         >
       </button>
-      <button class="button-84-pushable" role="button">
+      <dialog class="modal-create-user-array">
+        <p class="result" id="result10"></p>
+        <label for="create-user-array-name">TYPE USER NAME</label>
+        <input
+          type="text"
+          id="create-user-array-name"
+          name="create-user-array-name"
+          method="dialog"
+        />
+        <br />
+        <label for="create-user-array-fn">TYPE USER FIRST NAME</label>
+        <input
+          type="text"
+          id="create-user-array-fn"
+          name="create-user-array-fn"
+          method="dialog"
+        />
+        <br />
+        <label for="create-user-array-ln">TYPE USER LAST NAME</label>
+        <input
+          type="text"
+          id="create-user-array-ln"
+          name="create-user-array-ln"
+          method="dialog"
+        />
+        <br />
+        <label for="create-user-array-email">TYPE USER EMAIL</label>
+        <input
+          type="email"
+          required
+          id="create-user-array-email"
+          name="create-user-array-email"
+          method="dialog"
+        />
+        <br />
+        <label for="create-user-array-password">TYPE USER PASSWORD</label>
+        <input
+          type="password"
+          minlength="4"
+          required
+          id="create-user-array-password"
+          name="create-user-array-password"
+          method="dialog"
+        />
+        <br />
+        <label for="create-user-array-phone">TYPE USER PHONE</label>
+        <input
+          type="number"
+          id="create-user-array-phone"
+          name="create-user-array-phone"
+          method="dialog"
+        />
+        <br />
+        <button class="buttons" id="create-user-array-button">
+          CREATE USER ARRAY
+        </button>
+        <span class="close" id="closeCreateUserArray">&times;</span>
+      </dialog>
+      <!-- CREATE USERARRAY END ------------------------------->
+
+      <!-- CREATE USERLIST START ------------------------------->
+      <button class="button-84-pushable" role="button" id="createUserList">
         <span class="button-84-shadow"></span
         ><span class="button-84-edge"></span
         ><span class="button-84-front text"
@@ -386,6 +458,67 @@
           <i>with List</i></span
         >
       </button>
+      <dialog class="modal-create-user-list">
+        <p class="result" id="result11"></p>
+        <label for="create-user-list-name">TYPE USER NAME</label>
+        <input
+          type="text"
+          id="create-user-list-name"
+          name="create-user-list-name"
+          method="dialog"
+        />
+        <br />
+        <label for="create-user-list-fn">TYPE USER FIRST NAME</label>
+        <input
+          type="text"
+          id="create-user-list-fn"
+          name="create-user-list-fn"
+          method="dialog"
+        />
+        <br />
+        <label for="create-user-list-ln">TYPE USER LAST NAME</label>
+        <input
+          type="text"
+          id="create-user-list-ln"
+          name="create-user-list-ln"
+          method="dialog"
+        />
+        <br />
+        <label for="create-user-list-email">TYPE USER EMAIL</label>
+        <input
+          type="email"
+          required
+          id="create-user-list-email"
+          name="create-user-list-email"
+          method="dialog"
+        />
+        <br />
+        <label for="create-user-list-password">TYPE USER PASSWORD</label>
+        <input
+          type="password"
+          minlength="4"
+          required
+          id="create-user-list-password"
+          name="create-user-list-password"
+          method="dialog"
+        />
+        <br />
+        <label for="create-user-list-phone">TYPE USER PHONE</label>
+        <input
+          type="number"
+          id="create-user-list-phone"
+          name="create-user-list-phone"
+          method="dialog"
+        />
+        <br />
+        <button class="buttons" id="create-user-list-button">
+          CREATE USER LIST
+        </button>
+        <span class="close" id="closeCreateUserList">&times;</span>
+      </dialog>
+      <!-- CREATE USERLIST END ------------------------------->
+
+      <!-- FIND USER BY USERNAME START ------------------------------->
       <button class="button-84-pushable" role="button">
         <span class="button-84-shadow"></span
         ><span class="button-84-edge"></span
@@ -394,26 +527,54 @@
           <i>by USERNAME</i></span
         >
       </button>
+      <dialog class="modal-find-user">
+        <p class="result" id="result12"></p>
+        <label for="find-user-username">TYPE USERNAME</label>
+        <input
+          type="text"
+          id="find-user-username"
+          name="find-user-username"
+          method="dialog"
+        />
+        <br />
+        <button class="buttons" id="find-user-button">FIND USER</button>
+        <span class="close" id="closeFindUser">&times;</span>
+      </dialog>
+      <!-- FIND USER BY USERNAME END ------------------------------->
+
+      <!-- UPDATE USER  START ------------------------------->
       <button class="button-84-pushable" role="button">
         <span class="button-84-shadow"></span
         ><span class="button-84-edge"></span
         ><span class="button-84-front text">UPDATE USER🔄</span>
       </button>
+      <!-- UPDATE USER  END ------------------------------->
+
+      <!-- CREATE USER START ------------------------------->
       <button class="button-84-pushable" role="button">
         <span class="button-84-shadow"></span
         ><span class="button-84-edge"></span
         ><span class="button-84-front text">CREATE USER 🙋‍♂️</span>
       </button>
+      <!-- CREATE USER END ------------------------------->
+
+      <!-- LOGIN USER START ------------------------------->
       <button class="button-84-pushable" role="button">
         <span class="button-84-shadow"></span
         ><span class="button-84-edge"></span
         ><span class="button-84-front text">USER LOGIN⤵️</span>
       </button>
+      <!-- LOGIN USER END ------------------------------->
+
+      <!-- LOGOUT USER START ------------------------------->
       <button class="button-84-pushable" role="button">
         <span class="button-84-shadow"></span
         ><span class="button-84-edge"></span
         ><span class="button-84-front text">USER LOGOUT⤴️</span>
       </button>
+      <!-- LOGOUT USER END ------------------------------->
+
+      <!-- DELETE USER START ------------------------------->
       <button class="button-83-pushable" role="button">
         <span class="button-83-shadow"></span
         ><span class="button-83-edge"></span
@@ -421,6 +582,7 @@
           >DELETE USER❎ <br /><i>(by USERNAME)</i></span
         >
       </button>
+      <!-- DELETE USER END ------------------------------->
     </div>
     <!-- FOOTER -->
     <div class="footer">

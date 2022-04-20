@@ -58,7 +58,7 @@ function generateRandomId(maxLimit = 900) {
     return rand;
 }
 //PET FUNCTIONS
-const findPetByIdData = () => {
+const getPetById = () => {
 
     var petId = document.getElementById('pet-id').value;
     sendRequest('GET', 'https://petstore.swagger.io/v2/pet/' + petId).then(data => {
@@ -69,7 +69,7 @@ const findPetByIdData = () => {
     });
 }
 
-const findPetByStatusData = () => {
+const getPetsByStatus = () => {
     var status = document.getElementById('pet-status').value;
     sendRequest('GET', 'https://petstore.swagger.io/v2/pet/findByStatus?status=' + status).then(data => {
         for (var i = 0; i < data.length; i++) {
@@ -104,7 +104,7 @@ const updatePet = () => {
         }
         document.getElementById('result2').innerHTML = (JSON.stringify(data.id + '<br>' + 'pet\'s name--> ' + data.name + "<br>" + 'status --> ' + data.status
             + '<br>' + '<br>' + 'photo--> ' + data.photoUrls[0])) + '<br>' + 'PET UPDATED.<br> 🔄PAGE WILL REFRESH AFTER 5sec';
-        // document.write(JSON.stringify(data));
+
         setTimeout(() => { location.reload(); }, 5000);
     });
 }
@@ -281,6 +281,52 @@ const deleteOrder = () => {
             setTimeout(() => { location.reload(); }, 5000);
         });
     }
+}
+const createUserArray = () => {
+    var user = [
+        {
+            id: generateRandomId(),
+            username: document.getElementById('create-user-array-name').value,
+            firstName: document.getElementById('create-user-array-fn').value,
+            lastName: document.getElementById('create-user-array-ln').value,
+            email: document.getElementById('create-user-array-email').value,
+            password: document.getElementById('create-user-array-password').value,
+            phone: document.getElementById('create-user-array-phone').value,
+            userStatus: 1
+        }
+    ]
+    sendRequest('POST', 'https://petstore.swagger.io/v2/user/createWithArray', user).then(data => {
+        document.getElementById('result10').innerHTML = JSON.stringify(data) + '<br> 🙋‍♂️ User Array created.<br>  🔄PAGE WILL REFRESH AFTER 3sec';
+        setTimeout(() => { location.reload(); }, 3000);
+    }
+    ).catch(err => {
+        document.write(`Error: ${err}`);
+        console.error('There was an error!', err);
+    }
+    );
+}
+const createUserList = () => {
+    var user = [
+        {
+            id: generateRandomId(),
+            username: document.getElementById('create-user-list-name').value,
+            firstName: document.getElementById('create-user-list-fn').value,
+            lastName: document.getElementById('create-user-list-ln').value,
+            email: document.getElementById('create-user-list-email').value,
+            password: document.getElementById('create-user-list-password').value,
+            phone: document.getElementById('create-user-list-phone').value,
+            userStatus: 1
+        }
+    ]
+    sendRequest('POST', 'https://petstore.swagger.io/v2/user/createWithList', user).then(data => {
+        document.getElementById('result11').innerHTML = '🙋‍♂️ User List created. 🔄PAGE WILL REFRESH AFTER 3sec';
+        setTimeout(() => { location.reload(); }, 3000);
+    }
+    ).catch(err => {
+        document.write(`Error: ${err}`);
+        console.error('There was an error!', err);
+    }
+    );
 }
 
 
@@ -467,6 +513,37 @@ closedDeleteConfirmationOrderModal.addEventListener('click', () => {
 );
 
 
+//CREATE USER ARRAY MODAL
+const modalCreateUserArray = document.querySelector('.modal-create-user-array');
+const openModalCreateUserArray = document.querySelector('#createUserArray');
+const closeModalCreateUserArray = document.querySelector('#closeCreateUserArray');
+//OPEN/CLOSE CREATE USER ARRAY MODAL
+openModalCreateUserArray.addEventListener('click', () => {
+    modalCreateUserArray.showModal();
+}
+);
+closeModalCreateUserArray.addEventListener('click', () => {
+    modalCreateUserArray.close();
+}
+);
+
+
+//CREATE USER LIST MODAL
+const modalCreateUserList = document.querySelector('.modal-create-user-list');
+const openModalCreateUserList = document.querySelector('#createUserList');
+const closeModalCreateUserList = document.querySelector('#closeCreateUserList');
+//OPEN/CLOSE CREATE USER LIST MODAL
+openModalCreateUserList.addEventListener('click', () => {
+    modalCreateUserList.showModal();
+}
+);
+closeModalCreateUserList.addEventListener('click', () => {
+    modalCreateUserList.close();
+}
+);
+
+
+
 
 
 
@@ -487,10 +564,12 @@ const placePetOrderButton = document.getElementById('place-order-for-pet-button'
 const findOrderByIdButton = document.getElementById('find-order-by-id-button');
 const petInventory = document.getElementById('invetoryStatus');
 const deleteOrderButton = document.getElementById('delete-confirmation-order-button');
+const createUserArrayButton = document.getElementById('create-user-array-button');
+const createUserListButton = document.getElementById('create-user-list-button');
 //EVENT LISTENERS(BUTTONS) TO SEND REQUESTS-- CODE STARTS HERE
 
-findPetById.addEventListener('click', findPetByIdData);
-findPetByStat.addEventListener('click', findPetByStatusData);
+findPetById.addEventListener('click', getPetById);
+findPetByStat.addEventListener('click', getPetsByStatus);
 updatePetButton.addEventListener('click', updatePet);
 addPetButton.addEventListener('click', addPet);
 deleteByIdButton.addEventListener('click', deletePetById);
@@ -500,4 +579,5 @@ placePetOrderButton.addEventListener('click', placePetOrder);
 findOrderByIdButton.addEventListener('click', findOrderById);
 petInventory.addEventListener('click', inventory);
 deleteOrderButton.addEventListener('click', deleteOrder);
-
+createUserArrayButton.addEventListener('click', createUserArray);
+createUserListButton.addEventListener('click', createUserList);
