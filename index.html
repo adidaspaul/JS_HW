@@ -691,19 +691,46 @@
       <!-- CREATE USER END ------------------------------->
 
       <!-- LOGIN USER START ------------------------------->
-      <button class="button-84-pushable" role="button">
+      <button class="button-84-pushable" role="button" id="loginUser">
         <span class="button-84-shadow"></span
         ><span class="button-84-edge"></span
         ><span class="button-84-front text">USER LOGIN⤵️</span>
       </button>
+      <dialog class="modal-login-user">
+        <p class="result" id="result15"></p>
+        <label for="login-username">TYPE USERNAME</label>
+        <input
+          type="text"
+          id="login-username"
+          name="login-username"
+          method="dialog"
+        />
+        <br />
+        <label for="login-password">TYPE USER PASSWORD</label>
+        <input
+          type="password"
+          minlength="4"
+          id="login-password"
+          name="login-password"
+          method="dialog"
+        />
+        <br />
+        <button class="buttons" id="login-user-button">LOGIN USER</button>
+        <span class="close" id="closeLoginUser">&times;</span>
+      </dialog>
       <!-- LOGIN USER END ------------------------------->
 
       <!-- LOGOUT USER START ------------------------------->
-      <button class="button-84-pushable" role="button">
+      <button class="button-84-pushable" role="button" id="logout">
         <span class="button-84-shadow"></span
         ><span class="button-84-edge"></span
         ><span class="button-84-front text">USER LOGOUT⤴️</span>
       </button>
+      <dialog class="modal-logout-user">
+        <p class="result" id="result16">BYE BYE👋</p>
+        <button class="buttons" id="logout-user-button">LOGOUT USER</button>
+        <span class="close" id="closeLogout">&times;</span>
+      </dialog>
       <!-- LOGOUT USER END ------------------------------->
 
       <!-- DELETE USER START ------------------------------->

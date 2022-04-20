@@ -280,7 +280,30 @@ border-radius: 25px;
     background: linear-gradient(45deg, green, blue);
     opacity: .4;
 }
-
+.modal-login-user{
+    padding:1em;
+    max-width: 50ch;
+    margin: 1em auto;
+    background: radial-gradient(orange, rgb(231, 8, 212));
+    position: fixed;
+    border-radius: 25px;
+}
+.modal-login-user::backdrop{
+    background: linear-gradient(45deg, green, blue);
+    opacity: .4;
+}
+.modal-logout-user{
+    padding:1em;
+    max-width: 50ch;
+    margin: 1em auto;
+    background: radial-gradient(orange, rgb(231, 8, 212));
+    position: fixed;
+    border-radius: 25px;
+}
+.modal-logout-user::backdrop{
+    background: linear-gradient(45deg, green, blue);
+    opacity: .4;
+}
 
 label{
     font-size: 1.3em;

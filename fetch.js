@@ -362,7 +362,7 @@ const createUser = () => {
         userStatus: 1
     }
     sendRequest('POST', 'https://petstore.swagger.io/v2/user', user).then(data => {
-        document.getElementById('result13').innerHTML = 'User created.<br> 🔄PAGE WILL REFRESH AFTER 3sec';
+        document.getElementById('result14').innerHTML = 'User created.<br> 🔄PAGE WILL REFRESH AFTER 3sec';
         setTimeout(() => { location.reload(); }, 3000);
     }
     ).catch(err => {
@@ -383,6 +383,43 @@ const getUser = () => {
     }
     );
 }
+const login = () => {
+    var userName = document.getElementById('login-username').value;
+    var password = document.getElementById('login-password').value;
+    sendRequest('GET', 'https://petstore.swagger.io/v2/user/login?username=' + userName + '&password=' + password).then(data => {
+        document.getElementById('result15').innerHTML = JSON.stringify(data.message) + '<br> 🔄PAGE WILL REFRESH AFTER 5sec';
+        setTimeout(() => { location.reload(); }, 5000);
+    }
+    ).catch(err => {
+        document.write(`Error: ${err}`);
+        console.error('There was an error!', err);
+    }
+    );
+}
+const logout = () => {
+    sendRequest('GET', 'https://petstore.swagger.io/v2/user/logout').then(data => {
+        document.getElementById('result16').innerHTML = 'Logged out.<br> 🔄PAGE WILL REFRESH AFTER 5sec';
+        setTimeout(() => { location.reload(); }, 5000);
+    }
+    ).catch(err => {
+        document.write(`Error: ${err}`);
+        console.error('There was an error!', err);
+    }
+    );
+}
+const deleteUser = () => {
+    var userName = document.getElementById('delete-username').value;
+    sendRequest('DELETE', 'https://petstore.swagger.io/v2/user/' + userName).then(data => {
+        document.getElementById('result17').innerHTML = 'User deleted.<br> 🔄PAGE WILL REFRESH AFTER 5sec';
+        setTimeout(() => { location.reload(); }, 5000);
+    }
+    ).catch(err => {
+        document.write(`Error: ${err}`);
+        console.error('There was an error!', err);
+    }
+    );
+}
+
 
 
 
@@ -643,6 +680,35 @@ closeModalCreateUser.addEventListener('click', () => {
 );
 
 
+//LOGIN MODAL
+const modalLogin = document.querySelector('.modal-login-user');
+const openModalLogin = document.querySelector('#loginUser');
+const closeModalLogin = document.querySelector('#closeLoginUser');
+//OPEN/CLOSE LOGIN MODAL
+openModalLogin.addEventListener('click', () => {
+    modalLogin.showModal();
+}
+);
+closeModalLogin.addEventListener('click', () => {
+    modalLogin.close();
+}
+);
+
+
+//LOGOUT MODAL
+const modalLogout = document.querySelector('.modal-logout-user');
+const openModalLogout = document.querySelector('#logout');
+const closeModalLogout = document.querySelector('#closeLogout');
+//OPEN/CLOSE LOGOUT MODAL
+openModalLogout.addEventListener('click', () => {
+    modalLogout.showModal();
+}
+);
+closeModalLogout.addEventListener('click', () => {
+    modalLogout.close();
+}
+);
+
 
 
 // MODAL OPTIONS CODE END
@@ -665,6 +731,9 @@ const createUserListButton = document.getElementById('create-user-list-button');
 const updateUserButton = document.getElementById('update-user-button');
 const findUserButton = document.getElementById('find-user-button');
 const createUserButton = document.getElementById('create-user-button');
+const loginButton = document.getElementById('login-user-button');
+const logoutButton = document.getElementById('logout-user-button');
+const deleteUserButton = document.getElementById('delete-user-button');
 //EVENT LISTENERS(BUTTONS) TO SEND REQUESTS-- CODE STARTS HERE
 
 findPetById.addEventListener('click', getPetById);
@@ -683,5 +752,8 @@ createUserListButton.addEventListener('click', createUserList);
 updateUserButton.addEventListener('click', updateUser);
 findUserButton.addEventListener('click', getUser);
 createUserButton.addEventListener('click', createUser);
+loginButton.addEventListener('click', login);
+logoutButton.addEventListener('click', logout);
+deleteUserButton.addEventListener('click', deleteUser);
 
 
