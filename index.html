@@ -734,13 +734,28 @@
       <!-- LOGOUT USER END ------------------------------->
 
       <!-- DELETE USER START ------------------------------->
-      <button class="button-83-pushable" role="button">
+      <button class="button-83-pushable" role="button" id="deleteUser">
         <span class="button-83-shadow"></span
         ><span class="button-83-edge"></span
         ><span class="button-83-front text"
           >DELETE USER❎ <br /><i>(by USERNAME)</i></span
         >
       </button>
+      <dialog class="modal-delete-user">
+        <p class="result" id="result17">
+          Make Sure you Want to do this. Won't Ask Again
+        </p>
+        <label for="delete-username">TYPE USERNAME</label>
+        <input
+          type="text"
+          id="delete-username"
+          name="delete-username"
+          method="dialog"
+        />
+        <br />
+        <button class="buttons" id="delete-user-button">DELETE USER</button>
+        <span class="close" id="closeDeleteUser">&times;</span>
+      </dialog>
       <!-- DELETE USER END ------------------------------->
     </div>
     <!-- FOOTER -->

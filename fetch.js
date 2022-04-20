@@ -709,6 +709,19 @@ closeModalLogout.addEventListener('click', () => {
 }
 );
 
+//DELETE USER MODAL
+const modalDeleteUser = document.querySelector('.modal-delete-user');
+const openModalDeleteUser = document.querySelector('#deleteUser');
+const closeModalDeleteUser = document.querySelector('#closeDeleteUser');
+//OPEN/CLOSE DELETE USER MODAL
+openModalDeleteUser.addEventListener('click', () => {
+    modalDeleteUser.showModal();
+}
+);
+closeModalDeleteUser.addEventListener('click', () => {
+    modalDeleteUser.close();
+}
+);
 
 
 // MODAL OPTIONS CODE END
