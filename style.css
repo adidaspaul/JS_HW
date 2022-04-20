@@ -243,6 +243,43 @@ border-radius: 25px;
     background: linear-gradient(45deg, green, blue);
     opacity: .4;
 }
+.modal-update-user{
+    padding:1em;
+    max-width: 50ch;
+    margin: 1em auto;
+    background: radial-gradient(orange, rgb(231, 8, 212));
+    position: fixed;
+    border-radius: 25px;
+}
+.modal-update-user::backdrop{
+    background: linear-gradient(45deg, green, blue);
+    opacity: .4;
+}
+.modal-find-user{
+    padding:1em;
+    max-width: 50ch;
+    margin: 1em auto;
+    background: radial-gradient(orange, rgb(231, 8, 212));
+    position: fixed;
+    border-radius: 25px;
+
+}
+.modal-find-user::backdrop{
+    background: linear-gradient(45deg, green, blue);
+    opacity: .4;
+}
+.modal-create-user{
+    padding:1em;
+    max-width: 50ch;
+    margin: 1em auto;
+    background: radial-gradient(orange, rgb(231, 8, 212));
+    position: fixed;
+    border-radius: 25px;
+}
+.modal-create-user::backdrop{
+    background: linear-gradient(45deg, green, blue);
+    opacity: .4;
+}
 
 
 label{

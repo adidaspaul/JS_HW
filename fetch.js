@@ -328,6 +328,61 @@ const createUserList = () => {
     }
     );
 }
+const updateUser = () => {
+    var userName = document.getElementById('user-name-to-update').value;
+    var user = {
+        id: document.getElementById('update-user-id').value,
+        username: document.getElementById('update-user-username').value,
+        firstName: document.getElementById('update-user-fn').value,
+        lastName: document.getElementById('update-user-ln').value,
+        email: document.getElementById('update-user-email').value,
+        password: document.getElementById('update-user-password').value,
+        phone: document.getElementById('update-user-phone').value,
+        userStatus: 1
+    }
+    sendRequest('PUT', 'https://petstore.swagger.io/v2/user/' + userName, user).then(data => {
+        document.getElementById('result13').innerHTML = 'User updated.<br> 🔄PAGE WILL REFRESH AFTER 5sec';
+        setTimeout(() => { location.reload(); }, 5000);
+    }
+    ).catch(err => {
+        document.write(`Error: ${err}`);
+        console.error('There was an error!', err);
+    }
+    );
+}
+const createUser = () => {
+    var user = {
+        id: generateRandomId(),
+        username: document.getElementById('create-username').value,
+        firstName: document.getElementById('create-user-fn').value,
+        lastName: document.getElementById('create-user-ln').value,
+        email: document.getElementById('create-user-email').value,
+        password: document.getElementById('create-user-password').value,
+        phone: document.getElementById('create-user-phone').value,
+        userStatus: 1
+    }
+    sendRequest('POST', 'https://petstore.swagger.io/v2/user', user).then(data => {
+        document.getElementById('result13').innerHTML = 'User created.<br> 🔄PAGE WILL REFRESH AFTER 3sec';
+        setTimeout(() => { location.reload(); }, 3000);
+    }
+    ).catch(err => {
+        document.write(`Error: ${err}`);
+        console.error('There was an error!', err);
+    }
+    );
+}
+const getUser = () => {
+    var userName = document.getElementById('find-user-username').value;
+    sendRequest('GET', 'https://petstore.swagger.io/v2/user/' + userName).then(data => {
+        document.getElementById('result12').innerHTML = JSON.stringify(data) + '<br> 🔄PAGE WILL REFRESH AFTER 5sec';
+        setTimeout(() => { location.reload(); }, 5000);
+    }
+    ).catch(err => {
+        document.write(`Error: ${err}`);
+        console.error('There was an error!', err);
+    }
+    );
+}
 
 
 
@@ -543,8 +598,49 @@ closeModalCreateUserList.addEventListener('click', () => {
 );
 
 
+//UPDATE USER MODAL
+const modalUpdateUser = document.querySelector('.modal-update-user');
+const openModalUpdateUser = document.querySelector('#updateUser');
+const closeModalUpdateUser = document.querySelector('#closeUpdateUser');
+//OPEN/CLOSE UPDATE USER MODAL
+openModalUpdateUser.addEventListener('click', () => {
+    modalUpdateUser.showModal();
+}
+);
+closeModalUpdateUser.addEventListener('click', () => {
+    modalUpdateUser.close();
+}
+);
 
 
+//FIND USER MODAL
+const modalFindUser = document.querySelector('.modal-find-user');
+const openModalFindUser = document.querySelector('#findUser');
+const closeModalFindUser = document.querySelector('#closeFindUser');
+//OPEN/CLOSE FIND USER MODAL
+openModalFindUser.addEventListener('click', () => {
+    modalFindUser.showModal();
+}
+);
+closeModalFindUser.addEventListener('click', () => {
+    modalFindUser.close();
+}
+);
+
+
+//CREATE USER MODAL
+const modalCreateUser = document.querySelector('.modal-create-user');
+const openModalCreateUser = document.querySelector('#createUser');
+const closeModalCreateUser = document.querySelector('#closeCreateUser');
+//OPEN/CLOSE CREATE USER MODAL
+openModalCreateUser.addEventListener('click', () => {
+    modalCreateUser.showModal();
+}
+);
+closeModalCreateUser.addEventListener('click', () => {
+    modalCreateUser.close();
+}
+);
 
 
 
@@ -566,6 +662,9 @@ const petInventory = document.getElementById('invetoryStatus');
 const deleteOrderButton = document.getElementById('delete-confirmation-order-button');
 const createUserArrayButton = document.getElementById('create-user-array-button');
 const createUserListButton = document.getElementById('create-user-list-button');
+const updateUserButton = document.getElementById('update-user-button');
+const findUserButton = document.getElementById('find-user-button');
+const createUserButton = document.getElementById('create-user-button');
 //EVENT LISTENERS(BUTTONS) TO SEND REQUESTS-- CODE STARTS HERE
 
 findPetById.addEventListener('click', getPetById);
@@ -581,3 +680,8 @@ petInventory.addEventListener('click', inventory);
 deleteOrderButton.addEventListener('click', deleteOrder);
 createUserArrayButton.addEventListener('click', createUserArray);
 createUserListButton.addEventListener('click', createUserList);
+updateUserButton.addEventListener('click', updateUser);
+findUserButton.addEventListener('click', getUser);
+createUserButton.addEventListener('click', createUser);
+
+

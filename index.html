@@ -519,7 +519,7 @@
       <!-- CREATE USERLIST END ------------------------------->
 
       <!-- FIND USER BY USERNAME START ------------------------------->
-      <button class="button-84-pushable" role="button">
+      <button class="button-84-pushable" role="button" id="findUser">
         <span class="button-84-shadow"></span
         ><span class="button-84-edge"></span
         ><span class="button-84-front text"
@@ -543,19 +543,151 @@
       <!-- FIND USER BY USERNAME END ------------------------------->
 
       <!-- UPDATE USER  START ------------------------------->
-      <button class="button-84-pushable" role="button">
+      <button class="button-84-pushable" role="button" id="updateUser">
         <span class="button-84-shadow"></span
         ><span class="button-84-edge"></span
         ><span class="button-84-front text">UPDATE USER🔄</span>
       </button>
+      <dialog class="modal-update-user">
+        <p class="result" id="result13"></p>
+        <label for="user-name-to-update"
+          >TYPE USERNAME THAT YOU NEED TO UPDATE</label
+        >
+        <input
+          type="text"
+          id="user-name-to-update"
+          name="user-name-to-update"
+          method="dialog"
+        />
+        <br />
+        <p class="result">DETAILS TO UPDATE</p>
+        <p class="result">
+          put the same user ID. (Click Get User Button if you don't know the ID)
+        </p>
+        <label for="update-user-id">USER ID</label>
+        <input
+          type="number"
+          id="update-user-id"
+          name="update-user-id"
+          method="dialog"
+        />
+        <br />
+        <label for="update-user-username">TYPE USERNAME</label>
+        <input
+          type="text"
+          id="update-user-username"
+          name="update-user-username"
+          method="dialog"
+        />
+        <br />
+        <label for="update-user-fn">TYPE USER FIRST NAME</label>
+        <input
+          type="text"
+          id="update-user-fn"
+          name="update-user-fn"
+          method="dialog"
+        />
+        <br />
+        <label for="update-user-ln">TYPE USER LAST NAME</label>
+        <input
+          type="text"
+          id="update-user-ln"
+          name="update-user-ln"
+          method="dialog"
+        />
+        <br />
+        <label for="update-user-email">TYPE USER EMAIL</label>
+        <input
+          type="email"
+          id="update-user-email"
+          name="update-user-email"
+          method="dialog"
+        />
+        <br />
+        <label for="update-user-password">TYPE USER PASSWORD</label>
+        <input
+          type="password"
+          minlength="4"
+          id="update-user-password"
+          name="update-user-password"
+          method="dialog"
+        />
+        <br />
+        <label for="update-user-phone">TYPE USER PHONE</label>
+        <input
+          type="number"
+          id="update-user-phone"
+          name="update-user-phone"
+          method="dialog"
+        />
+        <br />
+        <button class="buttons" id="update-user-button">UPDATE USER</button>
+        <span class="close" id="closeUpdateUser">&times;</span>
+      </dialog>
+
       <!-- UPDATE USER  END ------------------------------->
 
       <!-- CREATE USER START ------------------------------->
-      <button class="button-84-pushable" role="button">
+      <button class="button-84-pushable" role="button" id="createUser">
         <span class="button-84-shadow"></span
         ><span class="button-84-edge"></span
         ><span class="button-84-front text">CREATE USER 🙋‍♂️</span>
       </button>
+      <dialog class="modal-create-user">
+        <p class="result" id="result14"></p>
+        <label for="create-username">TYPE USERNAME</label>
+        <input
+          type="text"
+          id="create-username"
+          name="create-username"
+          method="dialog"
+        />
+        <br />
+        <label for="create-user-fn">TYPE USER FIRST NAME</label>
+        <input
+          type="text"
+          id="create-user-fn"
+          name="create-user-fn"
+          method="dialog"
+        />
+        <br />
+        <label for="create-user-ln">TYPE USER LAST NAME</label>
+        <input
+          type="text"
+          id="create-user-ln"
+          name="create-user-ln"
+          method="dialog"
+        />
+        <br />
+        <label for="create-user-email">TYPE USER EMAIL</label>
+        <input
+          type="email"
+          id="create-user-email"
+          name="create-user-email"
+          method="dialog"
+        />
+        <br />
+        <label for="create-user-password">TYPE USER PASSWORD</label>
+        <input
+          type="password"
+          minlength="4"
+          id="create-user-password"
+          name="create-user-password"
+          method="dialog"
+        />
+        <br />
+        <label for="create-user-phone">TYPE USER PHONE</label>
+        <input
+          type="number"
+          id="create-user-phone"
+          name="create-user-phone"
+          method="dialog"
+        />
+        <br />
+        <button class="buttons" id="create-user-button">CREATE USER</button>
+        <span class="close" id="closeCreateUser">&times;</span>
+      </dialog>
+
       <!-- CREATE USER END ------------------------------->
 
       <!-- LOGIN USER START ------------------------------->
