@@ -65,6 +65,8 @@ const getPetById = () => {
         let name = data.tags[0].name;
         document.getElementById('result').innerHTML = (JSON.stringify(data.id + '<br>' + 'PET\'S NAME--> ' + data.name + "<br>" + 'STORE STATUS☑️ --> ' + data.status
             + '<br>' + 'photo--> ' + data.photoUrls[0] + '<br>' + 'TAG--> ' + name + '<br>' + 'CATEGORY--> ' + data.category.name));
+        console.log(JSON.stringify(data.id + '<br>' + 'PET\'S NAME--> ' + data.name + "<br>" + 'STORE STATUS☑️ --> ' + data.status
+            + '<br>' + 'photo--> ' + data.photoUrls[0] + '<br>' + 'TAG--> ' + name + '<br>' + 'CATEGORY--> ' + data.category.name))
 
     });
 }
@@ -74,6 +76,7 @@ const getPetsByStatus = () => {
     sendRequest('GET', 'https://petstore.swagger.io/v2/pet/findByStatus?status=' + status).then(data => {
         for (var i = 0; i < data.length; i++) {
             document.write(JSON.stringify(data[i].id + '--' + data[i].name + "<br>"));
+            console.log(JSON.stringify(data[i].id + '--' + data[i].name + "<br>"))
         }
     });
 }
@@ -98,14 +101,16 @@ const updatePet = () => {
         if (data.status >= 400) {
             return data.json().then(err => {
                 document.write(JSON.stringify(err.message));
-                setTimeout(() => { location.reload(); }, 4000);
+                console.log(JSON.stringify(err.message));
+                // setTimeout(() => { location.reload(); }, 4000);
             }
             );
         }
         document.getElementById('result2').innerHTML = (JSON.stringify(data.id + '<br>' + 'pet\'s name--> ' + data.name + "<br>" + 'status --> ' + data.status
             + '<br>' + '<br>' + 'photo--> ' + data.photoUrls[0])) + '<br>' + 'PET UPDATED.<br> 🔄PAGE WILL REFRESH AFTER 5sec';
-
-        setTimeout(() => { location.reload(); }, 5000);
+        console.log(JSON.stringify(data.id + '<br>' + 'pet\'s name--> ' + data.name + "<br>" + 'status --> ' + data.status
+            + '<br>' + '<br>' + 'photo--> ' + data.photoUrls[0]));
+        // setTimeout(() => { location.reload(); }, 5000);
     });
 }
 
@@ -128,7 +133,9 @@ const addPet = () => {
     sendRequest('POST', 'https://petstore.swagger.io/v2/pet', pet).then(data => {
         document.getElementById('result3').innerHTML = (JSON.stringify(data.id + '<br>' + 'pet\'s name--> ' + data.name + "<br>" + 'status --> '
             + data.status + '<br>' + '<br>' + 'photo--> ' + data.photoUrls[0])) + '<br>' + 'Pet added.<br> 🔄PAGE WILL REFRESH AFTER 5sec';
-        setTimeout(() => { location.reload(); }, 3000);
+        console.log(JSON.stringify(data.id + '<br>' + 'pet\'s name--> ' + data.name + "<br>" + 'status --> '
+            + data.status + '<br>' + '<br>' + 'photo--> ' + data.photoUrls[0]));
+        // setTimeout(() => { location.reload(); }, 3000);
     });
 }
 
@@ -136,8 +143,9 @@ const deletePetById = () => {
     var petId = document.getElementById('delete-pet-id').value;
     sendRequest('DELETE', 'https://petstore.swagger.io/v2/pet/' + petId).then(data => {
         document.getElementById('demo').innerHTML = 'Pet deleted <br> 🔄PAGE WILL REFRESH AFTER 2sec';
-        setTimeout(() => { location.reload(); }, 3000);
-        // document.write("deleted");
+        console.log(data);
+        // setTimeout(() => { location.reload(); }, 3000);
+
     });
 
 }
@@ -162,11 +170,13 @@ const updatePetInStore = () => {
                 '&status=' + document.getElementById('update-pet-in-store-status').value),
         }).then(response => {
             document.getElementById('result4').innerHTML = 'UPDATED.<br> 🔄PAGE WILL REFRESH AFTER 3sec';
-            setTimeout(() => { location.reload(); }, 3000);
+            console.log(response);
+            // setTimeout(() => { location.reload(); }, 3000);
         }
         ).catch(error => {
             return error.json().then(err => {
                 document.write(JSON.stringify(err.text()));
+                console.log(JSON.stringify(err.text()));
             }
             );
         });
@@ -203,11 +213,13 @@ const uploadPetPhoto = (e) => {
                 );
             }
             document.getElementById('result5').innerHTML = 'UPDATED.<br> 🔄PAGE WILL REFRESH AFTER 3sec';
-            setTimeout(() => { location.reload(); }, 3000);
+            console.log(response);
+            // setTimeout(() => { location.reload(); }, 3000);
         }
         ).catch(error => {
             return error.json().then(err => {
                 document.write(JSON.stringify(err.text()));
+                console.log(JSON.stringify(err.text()));
             }
             );
         });
@@ -226,7 +238,10 @@ const placePetOrder = () => {
         document.getElementById('result6').innerHTML = (JSON.stringify('Your Order ID' + data.id
             + '<br>' + 'pet\'s ID--> ' + data.petId + "<br>" + 'status --> ' + data.status + '<br>'
             + 'quantity--> ' + data.quantity + '<br>' + 'shipDate ' + data.shipDate)) + '<br>' + '🛒Order placed.<br> 🔄PAGE WILL REFRESH AFTER 5sec';
-        setTimeout(() => { location.reload(); }, 5000);
+        console.log(JSON.stringify('Your Order ID' + data.id
+            + '<br>' + 'pet\'s ID--> ' + data.petId + "<br>" + 'status --> ' + data.status + '<br>'
+            + 'quantity--> ' + data.quantity + '<br>' + 'shipDate ' + data.shipDate));
+        // setTimeout(() => { location.reload(); }, 5000);
     }
     ).catch(error => {
         return error.json().then(err => {
@@ -247,7 +262,10 @@ const findOrderById = () => {
             document.getElementById('result7').innerHTML = (JSON.stringify('Order ID' + data.id
                 + '<br>' + 'pet\'s ID--> ' + data.petId + "<br>" + 'status --> ' + data.status + '<br>'
                 + 'quantity--> ' + data.quantity + '<br>' + 'shipDate ' + data.shipDate)) + '<br>' + 'Order found.<br> 🔄PAGE WILL REFRESH AFTER 5sec';
-            setTimeout(() => { location.reload(); }, 5000);
+            console.log(JSON.stringify('Order ID' + data.id
+                + '<br>' + 'pet\'s ID--> ' + data.petId + "<br>" + 'status --> ' + data.status + '<br>'
+                + 'quantity--> ' + data.quantity + '<br>' + 'shipDate ' + data.shipDate));
+            // setTimeout(() => { location.reload(); }, 5000);
         }
         ).catch(error => {
             return error.json().then(err => {
@@ -262,10 +280,13 @@ const inventory = () => {
     sendRequest('GET', 'https://petstore.swagger.io/v2/store/inventory').then(data => {
         document.getElementById('result8').innerHTML = (JSON.stringify('Sold->' + data.sold + '<br>'
             + 'Pending->' + data.pending + '<br>' + 'Available-> ' + data.available)) + '<br>' + '🛒Inventory found.<br>';
+        console.log(JSON.stringify('Sold->' + data.sold + '<br>'
+            + 'Pending->' + data.pending + '<br>' + 'Available-> ' + data.available));
     }
     ).catch(error => {
         return error.json().then(err => {
             document.write(JSON.stringify(err.text()));
+            console.log(JSON.stringify(err.text()));
         }
         );
     }
@@ -278,7 +299,8 @@ const deleteOrder = () => {
     } else {
         sendRequest('DELETE', 'https://petstore.swagger.io/v2/store/order/' + orderId).then(data => {
             document.getElementById('demo1').innerHTML = 'Order deleted.<br> 🔄PAGE WILL REFRESH AFTER 5sec';
-            setTimeout(() => { location.reload(); }, 5000);
+            console.log(data);
+            // setTimeout(() => { location.reload(); }, 5000);
         });
     }
 }
@@ -297,7 +319,8 @@ const createUserArray = () => {
     ]
     sendRequest('POST', 'https://petstore.swagger.io/v2/user/createWithArray', user).then(data => {
         document.getElementById('result10').innerHTML = JSON.stringify(data) + '<br> 🙋‍♂️ User Array created.<br>  🔄PAGE WILL REFRESH AFTER 3sec';
-        setTimeout(() => { location.reload(); }, 3000);
+        console.log(data);
+        // setTimeout(() => { location.reload(); }, 3000);
     }
     ).catch(err => {
         document.write(`Error: ${err}`);
@@ -320,7 +343,8 @@ const createUserList = () => {
     ]
     sendRequest('POST', 'https://petstore.swagger.io/v2/user/createWithList', user).then(data => {
         document.getElementById('result11').innerHTML = '🙋‍♂️ User List created. 🔄PAGE WILL REFRESH AFTER 3sec';
-        setTimeout(() => { location.reload(); }, 3000);
+        console.log(data);
+        // setTimeout(() => { location.reload(); }, 3000);
     }
     ).catch(err => {
         document.write(`Error: ${err}`);
@@ -342,7 +366,8 @@ const updateUser = () => {
     }
     sendRequest('PUT', 'https://petstore.swagger.io/v2/user/' + userName, user).then(data => {
         document.getElementById('result13').innerHTML = 'User updated.<br> 🔄PAGE WILL REFRESH AFTER 5sec';
-        setTimeout(() => { location.reload(); }, 5000);
+        console.log(data);
+        // setTimeout(() => { location.reload(); }, 5000);
     }
     ).catch(err => {
         document.write(`Error: ${err}`);
@@ -363,7 +388,8 @@ const createUser = () => {
     }
     sendRequest('POST', 'https://petstore.swagger.io/v2/user', user).then(data => {
         document.getElementById('result14').innerHTML = 'User created.<br> 🔄PAGE WILL REFRESH AFTER 3sec';
-        setTimeout(() => { location.reload(); }, 3000);
+        console.log(data);
+        // setTimeout(() => { location.reload(); }, 3000);
     }
     ).catch(err => {
         document.write(`Error: ${err}`);
@@ -375,7 +401,8 @@ const getUser = () => {
     var userName = document.getElementById('find-user-username').value;
     sendRequest('GET', 'https://petstore.swagger.io/v2/user/' + userName).then(data => {
         document.getElementById('result12').innerHTML = JSON.stringify(data) + '<br> 🔄PAGE WILL REFRESH AFTER 5sec';
-        setTimeout(() => { location.reload(); }, 5000);
+        console.log(data);
+        // setTimeout(() => { location.reload(); }, 5000);
     }
     ).catch(err => {
         document.write(`Error: ${err}`);
@@ -388,7 +415,8 @@ const login = () => {
     var password = document.getElementById('login-password').value;
     sendRequest('GET', 'https://petstore.swagger.io/v2/user/login?username=' + userName + '&password=' + password).then(data => {
         document.getElementById('result15').innerHTML = JSON.stringify(data.message) + '<br> 🔄PAGE WILL REFRESH AFTER 5sec';
-        setTimeout(() => { location.reload(); }, 5000);
+        console.log(data);
+        // setTimeout(() => { location.reload(); }, 5000);
     }
     ).catch(err => {
         document.write(`Error: ${err}`);
@@ -399,7 +427,8 @@ const login = () => {
 const logout = () => {
     sendRequest('GET', 'https://petstore.swagger.io/v2/user/logout').then(data => {
         document.getElementById('result16').innerHTML = 'Logged out.<br> 🔄PAGE WILL REFRESH AFTER 5sec';
-        setTimeout(() => { location.reload(); }, 5000);
+        console.log(data);
+        // setTimeout(() => { location.reload(); }, 5000);
     }
     ).catch(err => {
         document.write(`Error: ${err}`);
@@ -411,7 +440,8 @@ const deleteUser = () => {
     var userName = document.getElementById('delete-username').value;
     sendRequest('DELETE', 'https://petstore.swagger.io/v2/user/' + userName).then(data => {
         document.getElementById('result17').innerHTML = 'User deleted.<br> 🔄PAGE WILL REFRESH AFTER 5sec';
-        setTimeout(() => { location.reload(); }, 5000);
+        console.log(data);
+        // setTimeout(() => { location.reload(); }, 5000);
     }
     ).catch(err => {
         document.write(`Error: ${err}`);
